@@ -68,5 +68,7 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>NFCReaderUsageDescription</key>
+	<string>NFCを使用します。</string>
 </dict>
 </plist>
