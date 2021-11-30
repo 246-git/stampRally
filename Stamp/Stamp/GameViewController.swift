@@ -16,6 +16,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
     
     
     @IBOutlet weak var UIDLabel1: UILabel!
+    @IBOutlet weak var getID: UILabel!
     
     var game_data:[NCMBObject] = [] //スタンプ情報
     var sNum:Int = 0    //選択したマップの番号
@@ -49,6 +50,8 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
                     print("取得に失敗しました: \(error)")
             }
         })
+        
+        self.getID.text = self.tagID[0]  //ここでエラー
 
         // Do any additional setup after loading the view.
     }
