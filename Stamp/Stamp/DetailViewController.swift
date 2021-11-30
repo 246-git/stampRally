@@ -72,7 +72,7 @@ class DetailViewController: UIViewController,CLLocationManagerDelegate {
                 }
     }
     
-    //画面遷移時の情報受け渡し
+    //gameViewにsNum受け渡し
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "showGameSegue"{
             guard let destination = segue.destination as? GameViewController else {
