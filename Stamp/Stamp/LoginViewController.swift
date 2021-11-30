@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         //passwordをセキリュティ入力
         self.passwordTextField.isSecureTextEntry = true
     }
@@ -72,11 +73,14 @@ class LoginViewController: UIViewController {
         self.performSegue(withIdentifier: "loginToSignUp", sender: self)
     }
     
-    @IBAction func tapScreen(_ sender: UITapGestureRecognizer) {
+
+    @IBAction func tapScreen(_ sender: Any) {
+        print("タップされたよ")
         self.view.endEditing(true)
     }
     
-    // TextFieldを空にする
+    
+     // TextFieldを空にする
     func cleanTextField(){
         userNameTextField.text = ""
         passwordTextField.text = ""

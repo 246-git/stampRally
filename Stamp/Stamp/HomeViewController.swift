@@ -49,6 +49,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        
         // クエリの作成。rallyから探す
         var query : NCMBQuery<NCMBObject> = NCMBQuery.getQuery(className: "Rally")
         // runの値が 1 と一致(実施中のスタンプラリー)

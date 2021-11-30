@@ -23,6 +23,8 @@ class DetailViewController: UIViewController,CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager!.requestWhenInUseAuthorization()
@@ -68,6 +70,18 @@ class DetailViewController: UIViewController,CLLocationManagerDelegate {
                 default:
                     break
                 }
+    }
+    
+    //画面遷移時の情報受け渡し
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "showGameSegue"{
+            guard let destination = segue.destination as? GameViewController else {
+                fatalError("Failed to prepare DetailViewController")
+            }
+            
+            destination.sNum = self.sNum
+        }
+        
     }
     
 

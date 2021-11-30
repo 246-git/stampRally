@@ -58,7 +58,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray4Color"/>
                         <constraints>
                             <constraint firstItem="dxj-Us-5Ea" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="O4g-X8-IB6"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="dxj-Us-5Ea" secondAttribute="bottom" constant="20" id="jfq-MV-MFj"/>
@@ -116,6 +116,9 @@
                                 <state key="normal" title="決定">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="VmY-6M-kLI" kind="presentation" identifier="showGameSegue" modalPresentationStyle="fullScreen" id="F0D-7g-7T9"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="イベント名：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgc-lJ-e7E">
                                 <rect key="frame" x="39" y="103" width="104" height="21"/>
@@ -125,12 +128,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gE9-OM-Q80">
-                                <rect key="frame" x="0.0" y="326" width="390" height="422"/>
+                                <rect key="frame" x="0.0" y="254" width="390" height="437"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="b5P-YI-nx5"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray4Color"/>
                     </view>
                     <navigationItem key="navigationItem" id="RIS-N8-xqA"/>
                     <connections>
@@ -142,6 +145,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wC8-9H-Avu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1873.8461538461538" y="101.65876777251184"/>
+        </scene>
+        <!--GameView-->
+        <scene sceneID="3an-X7-x9c">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GameView" id="VmY-6M-kLI" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QMe-S6-Ugr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2706" y="155"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="APY-cF-O7h">
@@ -168,6 +179,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

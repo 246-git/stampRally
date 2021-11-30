@@ -1,26 +1,28 @@
 //
-//  LogoutViewController.swift
+//  GameViewController.swift
 //  Stamp
 //
-//  Created by 246_MBP on 2021/06/14.
+//  Created by 246_MBP on 2021/11/30.
 //
 
 import UIKit
 import NCMB
+import CoreNFC
 
-class LogoutViewController: UIViewController {
 
-    @IBAction func logoutBtn(_ sender: Any) {
-        NCMBUser.logOut()
-        self.dismiss(animated: true, completion: nil)
-        print("ログアウトしました")
-    }
+class GameViewController: UIViewController {
     
-    
-    
+    var game_data:[NCMBObject] = [] //スタンプ情報
+    var sNum:Int = 0    //選択したマップの番号
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        print(sNum)
+        // クエリの作成。rallyから探す
+        var query : NCMBQuery<NCMBObject> = NCMBQuery.getQuery(className: "library")
+        // runの値が 1 と一致(実施中のスタンプラリー)
+        query.where(field: "run", equalTo: 1)
 
         // Do any additional setup after loading the view.
     }
