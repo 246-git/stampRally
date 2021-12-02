@@ -17,6 +17,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
     
     @IBOutlet weak var UIDLabel1: UILabel!
     @IBOutlet weak var getID: UILabel!
+    @IBOutlet weak var stampBtn: UIButton!
     
     var game_data:[NCMBObject] = [] //スタンプ情報
     var sNum:Int = 0    //選択したマップの番号
@@ -26,6 +27,9 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //ボタンに丸みをもたせる
+        self.stampBtn.layer.cornerRadius = 10.0
         
         className = global_data[sNum]["className"]
         // クエリの作成。rallyから探す
@@ -46,12 +50,17 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
                         self.tagID.append(tID!)
                     }
                     
+                    //UI部品の更新はメインスレッドで行う
+                    DispatchQueue.main.sync {
+                        self.getID.text = self.tagID[0]
+                    }
+                    
+                    
                 case let .failure(error):
                     print("取得に失敗しました: \(error)")
             }
         })
         
-        self.getID.text = self.tagID[0]  //ここでエラー
 
         // Do any additional setup after loading the view.
     }
@@ -59,7 +68,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
     
     @IBAction func CaptureBtn(_ sender: Any) {
         self.session = NFCTagReaderSession(pollingOption: .iso14443, delegate: self)
-        self.session?.alertMessage = "Hold Your Phone Near The NFC Tag"
+        self.session?.alertMessage = "携帯をNFCタグに近づけてください"
         self.session?.begin()
     }
     
@@ -86,7 +95,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
                 let UID = sTag.identifier.map{ String(format: "%.2hhx", $0)}.joined()
                 print("UID:",UID)
                 print(sTag.identifier)
-                session.alertMessage = "UID Captured"
+                session.alertMessage = "スタンプ完了"
                 session.invalidate()
                 DispatchQueue.main.async {
                     self.UIDLabel1.text = "\(UID)"
