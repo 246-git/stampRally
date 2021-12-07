@@ -117,7 +117,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="VmY-6M-kLI" kind="presentation" identifier="showGameSegue" modalPresentationStyle="fullScreen" id="F0D-7g-7T9"/>
+                                    <segue destination="VmY-6M-kLI" kind="show" identifier="showGameSegue" id="F0D-7g-7T9"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="イベント名：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgc-lJ-e7E">
@@ -149,7 +149,9 @@
         <!--GameView-->
         <scene sceneID="3an-X7-x9c">
             <objects>
-                <viewControllerPlaceholder storyboardName="GameView" id="VmY-6M-kLI" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="GameView" id="VmY-6M-kLI" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Bux-dc-abE"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QMe-S6-Ugr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2706" y="155"/>

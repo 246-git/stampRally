@@ -11,6 +11,7 @@
 		5A46ABDF274E1B6B00842CFF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A46ABDA274E1B5400842CFF /* MapKit.framework */; };
 		5A46ABE32755BF6900842CFF /* GameView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A46ABE22755BF6900842CFF /* GameView.storyboard */; };
 		5A46ABE52755C2DC00842CFF /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46ABE42755C2DC00842CFF /* GameViewController.swift */; };
+		5A46ABE7275F245200842CFF /* ShowNfcMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46ABE6275F245200842CFF /* ShowNfcMapViewController.swift */; };
 		5A6768B22677521A00152E07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6768B12677521A00152E07 /* AppDelegate.swift */; };
 		5A6768B42677521A00152E07 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6768B32677521A00152E07 /* SceneDelegate.swift */; };
 		5A6768B62677521A00152E07 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6768B52677521A00152E07 /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 		5A46ABDA274E1B5400842CFF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5A46ABE22755BF6900842CFF /* GameView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameView.storyboard; sourceTree = "<group>"; };
 		5A46ABE42755C2DC00842CFF /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		5A46ABE6275F245200842CFF /* ShowNfcMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNfcMapViewController.swift; sourceTree = "<group>"; };
 		5A6768AE2677521A00152E07 /* Stamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A6768B12677521A00152E07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A6768B32677521A00152E07 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				5A6768B72677521A00152E07 /* Main.storyboard */,
 				5AFBED39273A0E8800D97367 /* Home.storyboard */,
 				5A46ABE22755BF6900842CFF /* GameView.storyboard */,
+				5A46ABE6275F245200842CFF /* ShowNfcMapViewController.swift */,
 				5A46ABE42755C2DC00842CFF /* GameViewController.swift */,
 				5AFBED3F27464FA700D97367 /* DetailViewController.swift */,
 				5A6768CD26778B2F00152E07 /* LogoutViewController.swift */,
@@ -239,6 +242,7 @@
 			files = (
 				5A6768CA26778AA300152E07 /* LoginViewController.swift in Sources */,
 				5A6768B62677521A00152E07 /* ViewController.swift in Sources */,
+				5A46ABE7275F245200842CFF /* ShowNfcMapViewController.swift in Sources */,
 				5A6768B22677521A00152E07 /* AppDelegate.swift in Sources */,
 				5A6768B42677521A00152E07 /* SceneDelegate.swift in Sources */,
 				5A46ABE52755C2DC00842CFF /* GameViewController.swift in Sources */,
