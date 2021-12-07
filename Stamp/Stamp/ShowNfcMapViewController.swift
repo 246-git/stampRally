@@ -10,7 +10,7 @@ import NCMB
 import MapKit
 import CoreLocation
 
-class ShowNfcMapViewController: UIViewController,CLLocationManagerDelegate {
+class ShowNfcMapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var NfcMap: MKMapView!
     
@@ -38,7 +38,6 @@ class ShowNfcMapViewController: UIViewController,CLLocationManagerDelegate {
         for i in 0...(NFC_data.count-1){
             let pointAnnotation = MKPointAnnotation()
             let geo: NCMBGeoPoint? = NFC_data[i]["location"] //locaionデータを取得
-            
             pointAnnotation.title = NFC_data[i]["name"]
             pointAnnotation.subtitle = NFC_data[i]["information"]
             pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: geo!.latitude, longitude: geo!.longitude)
@@ -46,10 +45,22 @@ class ShowNfcMapViewController: UIViewController,CLLocationManagerDelegate {
             self.NfcMap.addAnnotation(pointAnnotation)
         }
         
-        
+        NfcMap.delegate = self
         // Do any additional setup after loading the view.
         
     }
+    
+    //ピンがタップされた際の処理 ここでエラー
+    func NfcMap(_ NfcMap: MKMapView, didSelect view: MKAnnotationView) {
+        print("aaaaaaaaaaaaaaaaaaaaaaa")
+        // タップされたピンの位置情報
+        print(view.annotation?.coordinate)
+        // タップされたピンのタイトルとサブタイトル
+        print(view.annotation?.title)
+        print(view.annotation?.subtitle)
+    }
+    
+    
     
     //現在地表示用関数
     func locationManager(_ manager: CLLocationManager,didChangeAuthorization status: CLAuthorizationStatus) {
