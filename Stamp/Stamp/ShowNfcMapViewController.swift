@@ -19,6 +19,7 @@ class ShowNfcMapViewController: UIViewController,CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //ピロパティ設定
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager!.requestWhenInUseAuthorization()
@@ -33,23 +34,42 @@ class ShowNfcMapViewController: UIViewController,CLLocationManagerDelegate {
         let region = MKCoordinateRegion(center: center, span: span)
         NfcMap.setRegion(region, animated:true)
         
-        var annotation:[MKPointAnnotation] = []  //NFCピン保存用
+        //すべてのNFCピンを刺す
         for i in 0...(NFC_data.count-1){
             let pointAnnotation = MKPointAnnotation()
-            let geo: NCMBGeoPoint? = NFC_data[i]["location"]
+            let geo: NCMBGeoPoint? = NFC_data[i]["location"] //locaionデータを取得
             
             pointAnnotation.title = NFC_data[i]["name"]
-            pointAnnotation.subtitle = NFC_data[i]["infotmation"]
+            pointAnnotation.subtitle = NFC_data[i]["information"]
             pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: geo!.latitude, longitude: geo!.longitude)
-            
-            annotation.append(pointAnnotation)
-            
+            //ピンを刺す
             self.NfcMap.addAnnotation(pointAnnotation)
         }
         
         
         // Do any additional setup after loading the view.
         
+    }
+    
+    //現在地表示用関数
+    func locationManager(_ manager: CLLocationManager,didChangeAuthorization status: CLAuthorizationStatus) {
+                switch status {
+                // 許可されてない場合
+                case .notDetermined:
+                // 許可を求める
+                    manager.requestWhenInUseAuthorization()
+                // 拒否されてる場合
+                case .restricted, .denied:
+                    // 何もしない
+                    break
+                // 許可されている場合
+                case .authorizedAlways, .authorizedWhenInUse:
+                    // 現在地の取得を開始
+                    manager.startUpdatingLocation()
+                    break
+                default:
+                    break
+                }
     }
     
 

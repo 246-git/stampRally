@@ -52,6 +52,7 @@ class DetailViewController: UIViewController,CLLocationManagerDelegate {
         // Do any additional setup after loading the view.
     }
     
+    //現在地表示用関数
     func locationManager(_ manager: CLLocationManager,didChangeAuthorization status: CLAuthorizationStatus) {
                 switch status {
                 // 許可されてない場合
