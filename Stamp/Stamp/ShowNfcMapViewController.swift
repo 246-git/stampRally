@@ -13,13 +13,15 @@ import CoreLocation
 class ShowNfcMapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var NfcMap: MKMapView!
+    @IBOutlet weak var stmp_Label: UILabel! //スタンプ名表示ラベル
+    @IBOutlet weak var detail_Label: UILabel! //スタンプ詳細情報表示ラベル
     
     var locationManager: CLLocationManager! //現在地表示用
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //ピロパティ設定
+        //プロパティ設定
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager!.requestWhenInUseAuthorization()
@@ -52,12 +54,17 @@ class ShowNfcMapViewController: UIViewController,CLLocationManagerDelegate, MKMa
     
     //ピンがタップされた際の処理 ここでエラー
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("aaaaaaaaaaaaaaaaaaaaaaa")
         // タップされたピンの位置情報
         print(view.annotation?.coordinate)
         // タップされたピンのタイトルとサブタイトル
         print(view.annotation?.title)
         print(view.annotation?.subtitle)
+        
+        //ラベルの更新
+        DispatchQueue.main.async {
+            self.stmp_Label.text = view.annotation?.title!
+            self.detail_Label.text = view.annotation?.subtitle!
+        }
     }
     
     
