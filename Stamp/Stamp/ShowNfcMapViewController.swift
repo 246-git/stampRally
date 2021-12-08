@@ -9,7 +9,7 @@ import UIKit
 import NCMB
 import MapKit
 import CoreLocation
-
+//, MKMapViewDelegate
 class ShowNfcMapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var NfcMap: MKMapView!
@@ -51,7 +51,7 @@ class ShowNfcMapViewController: UIViewController,CLLocationManagerDelegate, MKMa
     }
     
     //ピンがタップされた際の処理 ここでエラー
-    func NfcMap(_ NfcMap: MKMapView, didSelect view: MKAnnotationView) {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         print("aaaaaaaaaaaaaaaaaaaaaaa")
         // タップされたピンの位置情報
         print(view.annotation?.coordinate)
