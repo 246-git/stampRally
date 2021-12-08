@@ -23,21 +23,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tG-Dd-CKb">
-                                <rect key="frame" x="120" y="695" width="150" height="70"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="XFO-rZ-EhV"/>
-                                    <constraint firstAttribute="height" constant="70" id="fAo-Gm-J54"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="pKD-RX-c47"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="スタンプを押す"/>
-                                <connections>
-                                    <action selector="CaptureBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="G23-3r-sTa"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AdD-qt-746">
                                 <rect key="frame" x="52" y="438" width="317" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -50,11 +35,26 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cr5-8v-yE5">
-                                <rect key="frame" x="297" y="119" width="77" height="30"/>
+                                <rect key="frame" x="278" y="715" width="77" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="マップ表示"/>
                                 <connections>
                                     <segue destination="DmB-hx-B6w" kind="push" identifier="showNfcMap" id="5VO-tH-6gn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tG-Dd-CKb">
+                                <rect key="frame" x="27" y="695" width="150" height="70"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="XFO-rZ-EhV"/>
+                                    <constraint firstAttribute="height" constant="70" id="fAo-Gm-J54"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="pKD-RX-c47"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="スタンプを押す"/>
+                                <connections>
+                                    <action selector="CaptureBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="G23-3r-sTa"/>
                                 </connections>
                             </button>
                         </subviews>

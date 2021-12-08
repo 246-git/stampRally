@@ -18,7 +18,6 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
     
     var session: NFCReaderSession?
     
-    
     @IBOutlet weak var UIDLabel1: UILabel!
     @IBOutlet weak var getID: UILabel!
     @IBOutlet weak var stampBtn: UIButton!

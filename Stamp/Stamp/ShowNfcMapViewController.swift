@@ -9,7 +9,7 @@ import UIKit
 import NCMB
 import MapKit
 import CoreLocation
-//, MKMapViewDelegate
+
 class ShowNfcMapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var NfcMap: MKMapView!

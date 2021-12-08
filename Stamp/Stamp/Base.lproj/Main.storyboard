@@ -94,6 +94,9 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                         <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="HhD-lH-RNH" appends="YES" id="tb0-dg-gQv"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="hfN-bX-WJ7"/>
                     <connections>
