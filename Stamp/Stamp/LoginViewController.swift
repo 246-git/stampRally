@@ -75,7 +75,6 @@ class LoginViewController: UIViewController {
     
 
     @IBAction func tapScreen(_ sender: Any) {
-        print("タップされたよ")
         self.view.endEditing(true)
     }
     
