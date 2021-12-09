@@ -62,8 +62,8 @@ class ShowNfcMapViewController: UIViewController,CLLocationManagerDelegate, MKMa
         
         //ラベルの更新
         DispatchQueue.main.async {
-            self.stmp_Label.text = "スタンプ名：\(view.annotation?.title)"
-            self.detail_Label.text = "詳細情報：\(view.annotation?.subtitle)"
+            self.stmp_Label.text = "スタンプ名：\(view.annotation!.title!!)" //optional(optional())型になっている
+            self.detail_Label.text = "詳細情報：\(view.annotation!.subtitle!!)"
         }
     }
     
