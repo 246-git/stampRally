@@ -54,11 +54,11 @@ class ShowNfcMapViewController: UIViewController,CLLocationManagerDelegate, MKMa
     
     //ピンがタップされた際の処理 ここでエラー
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        // タップされたピンの位置情報
+        /* タップされたピンの位置情報
         print(view.annotation?.coordinate)
         // タップされたピンのタイトルとサブタイトル
         print(view.annotation?.title)
-        print(view.annotation?.subtitle)
+        print(view.annotation?.subtitle)*/
         
         //ラベルの更新
         DispatchQueue.main.async {

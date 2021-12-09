@@ -8,6 +8,8 @@
 import UIKit
 import NCMB
 
+var playuserName: String = ""
+
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var userNameTextField: UITextField!
@@ -50,6 +52,7 @@ class LoginViewController: UIViewController {
                     }
                     let user:NCMBUser = NCMBUser.currentUser!
                     print("ログインに成功しました:\(String(describing: user.objectId))")
+                    playuserName = user.userName!
                 case let .failure(error):
                     // 保存に失敗した場合の処理
                     DispatchQueue.main.sync {

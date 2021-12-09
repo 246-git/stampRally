@@ -25,7 +25,8 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
     var sNum:Int = 0    //選択したマップの番号
     var className:String? = "" //スタンプ取得状況クラス
     var NfcClassName:String? = ""//NFC情報クラス
-
+    var stamp_done: [UIImageView] = [] //取得済みスタンプ
+    var stamp_undone: [UIImageView] = [] //未取得のスタンプ
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,11 +42,12 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
         // runの値が 1 と一致(実施中のスタンプラリー)
         query.where(field: "run", equalTo: 1)
         
-        // 検索を行う
+        // NFCクラスの検索
         query.findInBackground(callback: { result in
             switch result {
                 case let .success(array):
                     print("取得に成功しました")
+                    print(playuserName)
                     NFC_data = array
                     NFCNum = array.count
                     
@@ -65,6 +67,11 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
                     print("取得に失敗しました: \(error)")
             }
         })
+        
+        query = NCMBQuery.getQuery(className:className!)
+        
+        //ユーザーデータクラスの検索
+        
         
 
         // Do any additional setup after loading the view.
