@@ -29,6 +29,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
     var NfcClassName:String? = ""//NFC情報クラス
     var stamp_done: [UIImageView] = [] //取得済みスタンプ
     var stamp_undone: [UIImageView] = [] //未取得のスタンプ
+    let semaphore = DispatchSemaphore(value: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +45,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
         // runの値が 1 と一致(実施中のスタンプラリー)
         query.where(field: "run", equalTo: 1)
         
-        let semaphore = DispatchSemaphore(value: 0)
+        //let semaphore = DispatchSemaphore(value: 0)
         
         // NFCクラスの検索
         query.findInBackground(callback: { result in
@@ -53,7 +54,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
                     print("スタンプ状況取得完了")
                     NFC_data = array
                     NFCNum = array.count
-                    semaphore.signal() //////////////////////////////
+                    self.semaphore.signal() //////////////////////////////
                     
                     for i in 0..<NFCNum{
                         let tID:String? = array[i]["tagID"]
@@ -70,28 +71,33 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
                 case let .failure(error):
                     print("取得に失敗しました: \(error)")
             }
+            self.semaphore.signal() //////////////////////////////
         })
         
         //クエリ作成
-        query = NCMBQuery.getQuery(className:className!)
+        var query2 : NCMBQuery<NCMBObject> = NCMBQuery.getQuery(className:NfcClassName!)
+        query2 = NCMBQuery.getQuery(className:className!)
         // 自分のユーザーデータを取得
-        query.where(field: "userName", equalTo: playuserName)
+        query2.where(field: "userName", equalTo: playuserName)
+        
         
         // ユーザーデータクラスの検索
-        query.findInBackground(callback: { result in
+        query2.findInBackground(callback: { result in
             switch result {
-                case let .success(array):
-                    print("ユーザー情報取得完了\(array.count)") //arrayの取得には成功しているが中身が空になっている
-                    my_samp_log = array
-                    semaphore.signal() ///////////////////////
+                case let .success(array2):
+                    print("ユーザー情報取得完了\(array2.count)") //arrayの取得には成功しているが中身が空になっている
+                    my_samp_log = array2
+                    
                     
                 case let .failure(error):
                     print("取得に失敗しました: \(error)")
             }
+            self.semaphore.signal() //////////////////////////////
         })
         
         semaphore.wait() //セマフォ
         semaphore.wait() //セマフォ
+        
         
         var numCount:Int = 0
         var varName:String = ""
@@ -102,11 +108,11 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
         //スタンプ画像の表示
         for i in 0...NFCNum{
             print("UIImage[\(NFCNum)]")
-            numCount += 80
+            numCount += 70
             dic[varName] = numCount
             //varName = String(numCount)
             dic[varName]! = UIImageView(image:imageDone)
-            let rect:CGRect = CGRect(x:0, y:numCount, width:80, height:80)
+            let rect:CGRect = CGRect(x:0, y:numCount+20, width:80, height:80)
             (dic[varName]! as! UIView).frame = rect
             
             logoImages.append(dic[varName]! as! UIImageView)
