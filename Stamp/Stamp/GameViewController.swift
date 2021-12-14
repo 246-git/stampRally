@@ -12,6 +12,8 @@ import CoreNFC
 var tagID:[String] = [] //tagID保存
 var NFCNum:Int = 0 //NFCタグの個数
 var NFC_data:[NCMBObject] = [] //NFCクラスのデータ
+var user_stmp_num:[String?] = [] //ユーザーが持っているスタンプの情報
+var my_samp_log:[NCMBObject] = [] //自分のデータ
 
 
 class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
@@ -42,14 +44,16 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
         // runの値が 1 と一致(実施中のスタンプラリー)
         query.where(field: "run", equalTo: 1)
         
+        let semaphore = DispatchSemaphore(value: 0)
+        
         // NFCクラスの検索
         query.findInBackground(callback: { result in
             switch result {
                 case let .success(array):
-                    print("取得に成功しました")
-                    print(playuserName)
+                    print("スタンプ状況取得完了")
                     NFC_data = array
                     NFCNum = array.count
+                    semaphore.signal() //////////////////////////////
                     
                     for i in 0..<NFCNum{
                         let tID:String? = array[i]["tagID"]
@@ -68,7 +72,49 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
             }
         })
         
+        //クエリ作成
         query = NCMBQuery.getQuery(className:className!)
+        // 自分のユーザーデータを取得
+        query.where(field: "userName", equalTo: playuserName)
+        
+        // ユーザーデータクラスの検索
+        query.findInBackground(callback: { result in
+            switch result {
+                case let .success(array):
+                    print("ユーザー情報取得完了\(array.count)") //arrayの取得には成功しているが中身が空になっている
+                    my_samp_log = array
+                    semaphore.signal() ///////////////////////
+                    
+                case let .failure(error):
+                    print("取得に失敗しました: \(error)")
+            }
+        })
+        
+        semaphore.wait() //セマフォ
+        semaphore.wait() //セマフォ
+        
+        var numCount:Int = 0
+        var varName:String = ""
+        var dic: Dictionary<String,Any> = [:]
+        let imageDone:UIImage = UIImage(named: "done")!
+        //let imageUndone:UIImage = UIImage(named: "undone")!
+        var logoImages: [UIImageView] = []
+        //スタンプ画像の表示
+        for i in 0...NFCNum{
+            print("UIImage[\(NFCNum)]")
+            numCount += 80
+            dic[varName] = numCount
+            //varName = String(numCount)
+            dic[varName]! = UIImageView(image:imageDone)
+            let rect:CGRect = CGRect(x:0, y:numCount, width:80, height:80)
+            (dic[varName]! as! UIView).frame = rect
+            
+            logoImages.append(dic[varName]! as! UIImageView)
+            print(logoImages)
+            
+            self.view.addSubview(logoImages[i])
+        }
+        
         
         //ユーザーデータクラスの検索
         
