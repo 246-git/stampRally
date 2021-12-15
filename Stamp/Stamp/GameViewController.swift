@@ -99,6 +99,11 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
         semaphore.wait() //セマフォ
         semaphore.wait() //セマフォ
         
+        //syncをasyncに変えると動く
+        DispatchQueue.main.async {
+            self.getID.text = tagID[0]
+        }
+        
         
         var numCount:Int = 0
         var varName:String = ""
@@ -108,7 +113,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
         var logoImages: [UIImageView] = []
         //スタンプ画像の表示
         for i in 0...NFCNum{
-            print("UIImage[\(NFCNum)]")
+            //print("UIImage[\(NFCNum)]")
             numCount += 70
             dic[varName] = numCount
             //varName = String(numCount)
@@ -117,7 +122,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
             (dic[varName]! as! UIView).frame = rect
             
             logoImages.append(dic[varName]! as! UIImageView)
-            print(logoImages)
+            //print(logoImages)
             
             self.view.addSubview(logoImages[i])
         }
