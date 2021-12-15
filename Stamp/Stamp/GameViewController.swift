@@ -62,10 +62,11 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
                         print("tag[\(i)]:\(tagID[i])")
                     }
                     
-                    //UI部品の更新はメインスレッドで行う
+                    //ここでラベルの更新の際にメインスレッドに戻るときにおそらくエラーが発生している
+                   /* //UI部品の更新はメインスレッドで行う
                     DispatchQueue.main.sync {
                         self.getID.text = tagID[0]
-                    }
+                    }*/
                     
                     
                 case let .failure(error):
