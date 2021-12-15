@@ -77,7 +77,7 @@ class DetailViewController: UIViewController,CLLocationManagerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "showGameSegue"{
             guard let destination = segue.destination as? GameViewController else {
-                fatalError("Failed to prepare DetailViewController")
+                fatalError("Failed to prepare GameViewController")
             }
             
             destination.sNum = self.sNum

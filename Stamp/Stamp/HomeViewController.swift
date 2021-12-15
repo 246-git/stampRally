@@ -60,7 +60,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         query.findInBackground(callback: { result in
             switch result {
                 case let .success(array):
-                    print("取得に成功しました 件数: \(array.count)")
+                    print("イベント情報取得完了　件数: \(array.count)")
                     global_data = array
                     
                     var vName:[String] = []

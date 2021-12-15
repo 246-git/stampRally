@@ -9,7 +9,7 @@ import UIKit
 import NCMB
 import CoreNFC
 
-var tagID:[String] = [] //tagID保存
+var activeTagID:[String] = [] //tagID保存
 var NFCNum:Int = 0 //NFCタグの個数
 var NFC_data:[NCMBObject] = [] //NFCクラスのデータ
 var user_stmp_num:[String?] = [] //ユーザーが持っているスタンプの情報
@@ -40,71 +40,59 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
         className = global_data[sNum]["className"] //検索対象のクラス名
         NfcClassName = className! + "NFC"
         
-        // クエリの作成。rallyから探す
+        // NFCクラスの検索
         var query : NCMBQuery<NCMBObject> = NCMBQuery.getQuery(className:NfcClassName!)
         // runの値が 1 と一致(実施中のスタンプラリー)
         query.where(field: "run", equalTo: 1)
         
-        //let semaphore = DispatchSemaphore(value: 0)
-        
-        // NFCクラスの検索
         query.findInBackground(callback: { result in
             switch result {
                 case let .success(array):
-                    print("スタンプ状況取得完了")
+                    print("NFCクラス取得完了")
                     NFC_data = array
                     NFCNum = array.count
-                    self.semaphore.signal() //////////////////////////////
                     
                     for i in 0..<NFCNum{
                         let tID:String? = array[i]["tagID"]
-                        tagID.append(tID!)
-                        print("tag[\(i)]:\(tagID[i])")
+                        activeTagID.append(tID!)
+                        print("tag[\(i)]:\(activeTagID[i])")
                     }
                     
-                    //ここでラベルの更新の際にメインスレッドに戻るときにおそらくエラーが発生している
-                   /* //UI部品の更新はメインスレッドで行う
-                    DispatchQueue.main.sync {
-                        self.getID.text = tagID[0]
-                    }*/
-                    
+                    self.semaphore.signal()
                     
                 case let .failure(error):
                     print("取得に失敗しました: \(error)")
             }
-            self.semaphore.signal() //////////////////////////////
+            self.semaphore.signal()
         })
         
-        //クエリ作成
+        //ユーザーデータクラスの検索
         var query2 : NCMBQuery<NCMBObject> = NCMBQuery.getQuery(className:NfcClassName!)
         query2 = NCMBQuery.getQuery(className:className!)
-        // 自分のユーザーデータを取得
+        // 自分ユーザーデータを取得
         query2.where(field: "userName", equalTo: playuserName)
-        
-        
-        // ユーザーデータクラスの検索
+
         query2.findInBackground(callback: { result in
             switch result {
                 case let .success(array2):
-                    print("ユーザー情報取得完了\(array2.count)") //arrayの取得には成功しているが中身が空になっている
+                    print("ユーザー情報取得完了")
                     my_samp_log = array2
-                    
                     
                 case let .failure(error):
                     print("取得に失敗しました: \(error)")
             }
-            self.semaphore.signal() //////////////////////////////
+            self.semaphore.signal()
         })
         
-        semaphore.wait() //セマフォ
-        semaphore.wait() //セマフォ
+        semaphore.wait() //ここでfindInBackGroundを待つ
+        semaphore.wait()
         
         //syncをasyncに変えると動く
         DispatchQueue.main.async {
-            self.getID.text = tagID[0]
+            self.getID.text = activeTagID[0]
         }
         
-        
+        //画像表示処理
         var numCount:Int = 0
         var varName:String = ""
         var dic: Dictionary<String,Any> = [:]
@@ -113,16 +101,13 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
         var logoImages: [UIImageView] = []
         //スタンプ画像の表示
         for i in 0...NFCNum{
-            //print("UIImage[\(NFCNum)]")
             numCount += 70
-            dic[varName] = numCount
-            //varName = String(numCount)
+            dic[varName] = numCount //keyにnumcountを代入
             dic[varName]! = UIImageView(image:imageDone)
             let rect:CGRect = CGRect(x:0, y:numCount+20, width:80, height:80)
             (dic[varName]! as! UIView).frame = rect
             
             logoImages.append(dic[varName]! as! UIImageView)
-            //print(logoImages)
             
             self.view.addSubview(logoImages[i])
         }
@@ -162,13 +147,13 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
                 session.invalidate(errorMessage: "接続失敗")
             }
             if case let .miFare(sTag) = tag{
-                let UID = sTag.identifier.map{ String(format: "%.2hhx", $0)}.joined()
-                print("UID:",UID)
+                let scanTagID = sTag.identifier.map{ String(format: "%.2hhx", $0)}.joined()
+                print("UID:",scanTagID)
                 print(sTag.identifier)
                 session.alertMessage = "スタンプ完了！"
                 session.invalidate()
                 DispatchQueue.main.async {
-                    self.UIDLabel1.text = "\(UID)"  //ここでラベル表示する
+                    self.UIDLabel1.text = "\(scanTagID)"  //ここでラベル表示する
                 }
             }
         }
