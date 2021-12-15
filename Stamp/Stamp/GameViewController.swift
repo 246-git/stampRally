@@ -90,14 +90,9 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
         semaphore.wait() //ここでfindInBackGroundを待つ
         semaphore.wait()
         
-        //syncをasyncに変えると動く
-        DispatchQueue.main.async {
-            self.getID.text = activeTagID![0]
-        }
-        
         //画像表示処理
         var numCount:Int = 0
-        var varName:String = ""
+        let varName:String = ""
         var dic: Dictionary<String,Any> = [:]
         let imageDone:UIImage = UIImage(named: "done")!
         let imageUndone:UIImage = UIImage(named: "undone")!
@@ -107,7 +102,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
             numCount += 70
             dic[varName] = numCount //keyにnumcountを代入
             var b: Bool = false
-            for j in 0..<user_stmp_num!.count{ //NFCnumからユーザーのスタンプ数に変更する必要がある
+            for j in 0..<user_stmp_num!.count{ //表示順序を何とかする
                 if user_stmp_num![j] == activeTagName![i]{
                     dic[varName]! = UIImageView(image:imageDone)//ここに条件判定を追加する
                     b = true
@@ -115,6 +110,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
                 }
             }
             if b == false   {dic[varName]! = UIImageView(image:imageUndone)}
+            print("unmatched")
             
             let rect:CGRect = CGRect(x:0, y:numCount+20, width:80, height:80)
             (dic[varName]! as! UIView).frame = rect
@@ -124,8 +120,10 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
             self.view.addSubview(logoImages[i])
         }
         
-        
-        //ユーザーデータクラスの検索
+        //syncをasyncに変えると動く
+        DispatchQueue.main.async {
+            self.getID.text = activeTagID![0]
+        }
         
         
 
