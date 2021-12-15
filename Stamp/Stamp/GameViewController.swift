@@ -9,11 +9,12 @@ import UIKit
 import NCMB
 import CoreNFC
 
-var activeTagID:[String] = [] //tagID保存
 var NFCNum:Int = 0 //NFCタグの個数
 var NFC_data:[NCMBObject] = [] //NFCクラスのデータ
-var user_stmp_num:[String?] = [] //ユーザーが持っているスタンプの情報
 var my_samp_log:[NCMBObject] = [] //自分のデータ
+var activeTagID:[String]? = [] //実施されているtagID
+var activeTagName:[String]? = [] //実施されているスタンプ名
+var user_stmp_num:[String]? = [] //ユーザーが持っているスタンプの情報
 
 
 class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
@@ -25,15 +26,12 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
     @IBOutlet weak var stampBtn: UIButton!
     
     var sNum:Int = 0    //選択したマップの番号
-    var className:String? = "" //スタンプ取得状況クラス
-    var NfcClassName:String? = ""//NFC情報クラス
-    var stamp_done: [UIImageView] = [] //取得済みスタンプ
-    var stamp_undone: [UIImageView] = [] //未取得のスタンプ
+    var className:String? = "" //スタンプ取得状況クラス名
+    var NfcClassName:String? = ""//NFC情報クラス名
     let semaphore = DispatchSemaphore(value: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //ボタンに丸みをもたせる
         self.stampBtn.layer.cornerRadius = 10.0
         
@@ -54,8 +52,12 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
                     
                     for i in 0..<NFCNum{
                         let tID:String? = array[i]["tagID"]
-                        activeTagID.append(tID!)
-                        print("tag[\(i)]:\(activeTagID[i])")
+                        let name:String? = array[i]["name"]
+                        
+                        //実施中のタグIDと名前をグローバル変数に保存
+                        activeTagID!.append(tID!)
+                        activeTagName!.append(name!)
+                        print("tag[\(i)]:\(activeTagID![i])")
                     }
                     
                     self.semaphore.signal()
@@ -75,8 +77,9 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
         query2.findInBackground(callback: { result in
             switch result {
                 case let .success(array2):
-                    print("ユーザー情報取得完了")
                     my_samp_log = array2
+                    user_stmp_num = array2[0]["getStamp"]
+                    print("ユーザー情報取得完了\(user_stmp_num)")
                     
                 case let .failure(error):
                     print("取得に失敗しました: \(error)")
@@ -89,7 +92,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
         
         //syncをasyncに変えると動く
         DispatchQueue.main.async {
-            self.getID.text = activeTagID[0]
+            self.getID.text = activeTagID![0]
         }
         
         //画像表示処理
@@ -97,13 +100,22 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
         var varName:String = ""
         var dic: Dictionary<String,Any> = [:]
         let imageDone:UIImage = UIImage(named: "done")!
-        //let imageUndone:UIImage = UIImage(named: "undone")!
+        let imageUndone:UIImage = UIImage(named: "undone")!
         var logoImages: [UIImageView] = []
         //スタンプ画像の表示
-        for i in 0...NFCNum{
+        for i in 0..<NFCNum{
             numCount += 70
             dic[varName] = numCount //keyにnumcountを代入
-            dic[varName]! = UIImageView(image:imageDone)
+            var b: Bool = false
+            for j in 0..<user_stmp_num!.count{ //NFCnumからユーザーのスタンプ数に変更する必要がある
+                if user_stmp_num![j] == activeTagName![i]{
+                    dic[varName]! = UIImageView(image:imageDone)//ここに条件判定を追加する
+                    b = true
+                    print("matched")
+                }
+            }
+            if b == false   {dic[varName]! = UIImageView(image:imageUndone)}
+            
             let rect:CGRect = CGRect(x:0, y:numCount+20, width:80, height:80)
             (dic[varName]! as! UIView).frame = rect
             
