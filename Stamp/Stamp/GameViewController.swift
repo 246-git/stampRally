@@ -109,9 +109,8 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
         })
         
         //ユーザーデータクラスの検索
-        var query2 : NCMBQuery<NCMBObject> = NCMBQuery.getQuery(className:NfcClassName!)
-        query2 = NCMBQuery.getQuery(className:className!)
-        // 自分ユーザーデータを取得
+        var query2 : NCMBQuery<NCMBObject> = NCMBQuery.getQuery(className:className!)
+        // 自分のユーザーデータを取得
         query2.where(field: "userName", equalTo: playuserName)
 
         query2.findInBackground(callback: { result in
@@ -123,6 +122,23 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                     
                 case let .failure(error):
                     print("取得に失敗しました: \(error)")
+                    /*let object : NCMBObject = NCMBObject(className:self.className!)
+                    object["getStamp"] = []
+                    object["userName"] = playuserName
+                    
+                    // データストアへの登録を実施
+                    object.saveInBackground(callback: { result in
+                        switch result {
+                            case .success:
+                                // 保存に成功した場合の処理
+                                print("保存に成功しました")
+                            case let .failure(error):
+                                // 保存に失敗した場合の処理
+                                print("保存に失敗しました: \(error)")
+                        }
+                    })*/
+                    
+
             }
             self.semaphore.signal()
             print("セマフォ")
@@ -150,7 +166,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
         }
         
         DispatchQueue.main.async {
-            print("phoeos set\(self.res)") //resが空になっている
+            print("photos set\(self.res)")
             self.photos = self.res
         }
 
@@ -158,7 +174,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
     }
     
     
-    
+
     @IBAction func CaptureBtn(_ sender: Any) {
         self.session = NFCTagReaderSession(pollingOption: .iso14443, delegate: self)
         self.session?.alertMessage = "携帯をタグに近づけてください"
@@ -191,6 +207,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                 session.alertMessage = "スタンプ完了！"
                 session.invalidate()
                 
+                //ここでタグをすでに持っているか判定（true:持っていない）
                 var judge:Bool = true
                 for i in 0..<self.NFCNum{
                     if activeTagID![i] == scanTagID {
