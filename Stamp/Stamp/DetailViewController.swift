@@ -16,7 +16,6 @@ class DetailViewController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var event_name: UILabel!
     @IBOutlet weak var game_type: UILabel!
     @IBOutlet weak var venue_Map: MKMapView!
-    @IBOutlet weak var infoLabel: UILabel!
     
     var sNum:Int = 0    //選択したマップの番号
     var locationManager: CLLocationManager! //現在地表示用
@@ -87,28 +86,6 @@ class DetailViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     
-    @IBAction func signUp(_ sender: Any) {
-            let className:String? = global_data[sNum]["className"] //検索対象のクラス名
-            let object : NCMBObject = NCMBObject(className:className!)
-            object["getStamp"] = []
-            object["userName"] = playuserName
-            
-            // データストアへの登録を実施
-            object.saveInBackground(callback: { result in
-                switch result {
-                    case .success:
-                        // 保存に成功した場合の処理
-                        print("参加完了")
-                        DispatchQueue.main.sync{
-                            self.infoLabel.text = "参加登録完了"
-                        }
-                    case let .failure(error):
-                        // 保存に失敗した場合の処理
-                        print("保存に失敗しました: \(error)")
-                }
-                
-            })
-        }
     
     /*
     // MARK: - Navigation

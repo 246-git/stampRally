@@ -61,6 +61,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
     var className:String? = "" //スタンプ取得状況クラス名
     var NfcClassName:String? = ""//NFC情報クラス名
     let semaphore = DispatchSemaphore(value: 0)
+    let semaphore2 = DispatchSemaphore(value: 0)
     var NFCNum:Int = 0
 
 
@@ -103,45 +104,55 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                     
                 case let .failure(error):
                     print("取得に失敗しました: \(error)")
+
             }
             self.semaphore.signal()
-            print("セマフォ")
+            print("セマフォ１")
         })
         
+
+        //self.semaphore2.wait()
         //ユーザーデータクラスの検索
         var query2 : NCMBQuery<NCMBObject> = NCMBQuery.getQuery(className:className!)
         // 自分のユーザーデータを取得
         query2.where(field: "userName", equalTo: playuserName)
-
+        print("username\(playuserName)")
         query2.findInBackground(callback: { result in
             switch result {
                 case let .success(array2):
-                    my_samp_log = array2
-                    user_stmp_num = array2[0]["getStamp"]
-                    print("ユーザー情報取得完了")
+                    if array2.isEmpty == true {
+                        let object : NCMBObject = NCMBObject(className:self.className!)
+                        object["getStamp"] = []
+                        object["userName"] = playuserName
+                        
+                        // データストアへの登録を実施
+                        object.saveInBackground(callback: { result in
+                            switch result {
+                                case .success:
+                                    // 保存に成功した場合の処理
+                                    print("参加完了")
+                                case let .failure(error):
+                                    // 保存に失敗した場合の処理
+                                    print("保存に失敗しました: \(error)")
+                            }
+                            my_samp_log.append(object)
+                            user_stmp_num = []
+                            print("セマフォ２")
+                            self.semaphore.signal()
+                        })
+                    }else{
+                        print("ユーザー情報取得完了")
+                        my_samp_log = array2
+                        user_stmp_num = array2[0]["getStamp"]  //配列が空でもok判定となる
+                        print("セマフォ3")
+                        self.semaphore.signal()
+                    }
                     
                 case let .failure(error):
                     print("取得に失敗しました: \(error)")
-                    /*let object : NCMBObject = NCMBObject(className:self.className!)
-                    object["getStamp"] = []
-                    object["userName"] = playuserName
-                    
-                    // データストアへの登録を実施
-                    object.saveInBackground(callback: { result in
-                        switch result {
-                            case .success:
-                                // 保存に成功した場合の処理
-                                print("保存に成功しました")
-                            case let .failure(error):
-                                // 保存に失敗した場合の処理
-                                print("保存に失敗しました: \(error)")
-                        }
-                    })*/
-                    
+
 
             }
-            self.semaphore.signal()
-            print("セマフォ")
         })
         
         
@@ -156,12 +167,12 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                 if user_stmp_num![j] == activeTagName![i]{
                     self.res.append("done")
                     b = true
-                    print("matched")
+                    //print("matched")
                 }
             }
             if b == false   {
                 self.res.append("undone")
-                print("unmatched")
+                //print("unmatched")
             }
         }
         
