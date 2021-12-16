@@ -63,6 +63,7 @@ class SignUpViewController: UIViewController {
                 }
                 let user:NCMBUser = NCMBUser.currentUser!
                 print("ログインに成功しました:\(String(describing: user.objectId))")
+                playuserName = user.userName!
                 
             case let .failure(error):
                 // 新規登録失敗時の処理
