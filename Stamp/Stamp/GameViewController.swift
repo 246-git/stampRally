@@ -66,6 +66,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
                     print("取得に失敗しました: \(error)")
             }
             self.semaphore.signal()
+            print("semaphoreSignal")
         })
         
         //ユーザーデータクラスの検索
@@ -85,11 +86,14 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate {
                     print("取得に失敗しました: \(error)")
             }
             self.semaphore.signal()
+            print("semaphoreSignal")
         })
         
-        semaphore.wait() //ここでfindInBackGroundを待つ
-        semaphore.wait()
         
+        for i in 0..<3{
+            semaphore.wait() //ここでfindInBackGroundを待つ
+        }
+
         //画像表示処理
         var numCount:Int = 0
         let varName:String = ""
