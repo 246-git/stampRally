@@ -36,28 +36,26 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
         didSet{
             tableView.reloadData()
         }
-    }
+    }//done,undoneが入っている
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print("donenfcnum")
         return self.NFCNumRes
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //セルを作る
-        //print("viewdone")
         let cell = tableView.dequeueReusableCell(withIdentifier: "stampCell", for: indexPath as IndexPath)
-        /*let imageView = cell.contentView.viewWithTag(2) as! UIImageView
-        
-        // 画像配列の番号で指定された要素の名前の画像をUIImageとする
-        let cellImage = UIImage(named: self.photos[indexPath.row])
-        // UIImageをUIImageViewのimageとして設定
-        imageView.image = cellImage*/
         cell.imageView!.image = UIImage(named: self.photos[indexPath.row])
+        cell.textLabel!.text = activeTagName![indexPath.row]
         
         return cell
-        
     }
+    
+    //cellの高さ調整
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            return 70
+    }
+
     
     var sNum:Int = 0    //選択したマップの番号
     var className:String? = "" //スタンプ取得状況クラス名
