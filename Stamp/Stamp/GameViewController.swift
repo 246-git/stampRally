@@ -66,6 +66,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "スタンプ画面"
         //ボタンに丸みをもたせる
         self.stampBtn.layer.cornerRadius = 10.0
         
@@ -189,9 +190,23 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                 print(sTag.identifier)
                 session.alertMessage = "スタンプ完了！"
                 session.invalidate()
-                DispatchQueue.main.async {
-                    //self.UIDLabel1.text = "\(scanTagID)"  //ここでラベル表示する
+                
+                var judge:Bool = true
+                for i in 0..<self.NFCNum{
+                    if activeTagID![i] == scanTagID {
+                        print("このタグは[\(activeTagName![i])]")
+                        for j in 0..<user_stmp_num!.count{
+                            if activeTagName![i] == user_stmp_num![j]{
+                                judge = false
+                            }
+                        }
+                    }
                 }
+                
+                if judge == true{
+                    print("新規スタンプ獲得")
+                }
+                
             }
         }
     }

@@ -20,6 +20,7 @@ class ShowNfcMapViewController: UIViewController,CLLocationManagerDelegate, MKMa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "スタンプMap"
         
         //プロパティ設定
         locationManager = CLLocationManager()

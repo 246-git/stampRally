@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--開催地一覧-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="HomeViewController" customModule="Stamp" customModuleProvider="target" sceneMemberID="viewController">
@@ -58,13 +58,13 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dxj-Us-5Ea" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="O4g-X8-IB6"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="dxj-Us-5Ea" secondAttribute="bottom" constant="20" id="jfq-MV-MFj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="zRc-vG-2Kk"/>
+                    <navigationItem key="navigationItem" title="開催地一覧" id="zRc-vG-2Kk"/>
                     <connections>
                         <outlet property="tableView" destination="eEH-qF-Yob" id="Wci-9V-sYo"/>
                     </connections>
@@ -73,7 +73,7 @@
             </objects>
             <point key="canvasLocation" x="1067.6923076923076" y="101.65876777251184"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--詳細情報-->
         <scene sceneID="2pj-eS-n6n">
             <objects>
                 <viewController id="Ntp-tJ-DUB" customClass="DetailViewController" customModule="Stamp" customModuleProvider="target" sceneMemberID="viewController">
@@ -133,9 +133,9 @@
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="b5P-YI-nx5"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <navigationItem key="navigationItem" id="RIS-N8-xqA"/>
+                    <navigationItem key="navigationItem" title="詳細情報" id="RIS-N8-xqA"/>
                     <connections>
                         <outlet property="event_name" destination="t4h-qd-q2Q" id="BSS-Wc-i81"/>
                         <outlet property="game_type" destination="YDl-n3-zUv" id="HGy-Js-UIq"/>
@@ -181,9 +181,6 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

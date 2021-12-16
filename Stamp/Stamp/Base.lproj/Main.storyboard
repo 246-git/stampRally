@@ -23,7 +23,7 @@
             </objects>
             <point key="canvasLocation" x="-1504" y="121"/>
         </scene>
-        <!--Login View Controller-->
+        <!--ログイン-->
         <scene sceneID="F4h-My-GDy">
             <objects>
                 <viewController id="Lbc-8N-5sL" customClass="LoginViewController" customModule="Stamp" sceneMemberID="viewController">
@@ -98,7 +98,7 @@
                             <outletCollection property="gestureRecognizers" destination="HhD-lH-RNH" appends="YES" id="tb0-dg-gQv"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="hfN-bX-WJ7"/>
+                    <navigationItem key="navigationItem" title="ログイン" id="hfN-bX-WJ7"/>
                     <connections>
                         <outlet property="errorLabel" destination="wEs-tc-CZM" id="vT1-T2-TGq"/>
                         <outlet property="passwordTextField" destination="hmb-5I-Vhx" id="Bfv-Ih-ED2"/>
@@ -116,7 +116,7 @@
             </objects>
             <point key="canvasLocation" x="-555.38461538461536" y="120.14218009478672"/>
         </scene>
-        <!--Sign Up View Controller-->
+        <!--会員登録-->
         <scene sceneID="T5X-an-FIi">
             <objects>
                 <viewController id="Iae-Ww-qkT" customClass="SignUpViewController" customModule="Stamp" customModuleProvider="target" sceneMemberID="viewController">
@@ -196,7 +196,7 @@
                             <outletCollection property="gestureRecognizers" destination="YFE-fX-EAX" appends="YES" id="qFi-1b-xXd"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="BRU-cC-N4m"/>
+                    <navigationItem key="navigationItem" title="会員登録" id="BRU-cC-N4m"/>
                     <connections>
                         <outlet property="errorLabel" destination="mtb-yL-euh" id="7Ji-pr-TcG"/>
                         <outlet property="passwordTextField" destination="hDq-6j-Tlf" id="AqZ-8N-75G"/>
