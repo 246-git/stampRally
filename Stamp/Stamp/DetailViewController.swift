@@ -1,6 +1,6 @@
 //
 //  DetailViewController.swift
-//  Stamp
+//  Stamp/Users/nishimurakennin/github/stamp/Stamp/Stamp/HomeViewController.swift
 //
 //  Created by 246_MBP on 2021/11/18.
 //

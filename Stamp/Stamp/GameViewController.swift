@@ -11,7 +11,7 @@ import CoreNFC
 
 
 var NFC_data:[NCMBObject] = [] //NFCクラスのデータ
-var my_samp_log:[NCMBObject] = [] //自分のデータ
+var my_stmp_log:[NCMBObject] = [] //自分のデータ
 var activeTagID:[String]? = [] //実施されているtagID
 var activeTagName:[String]? = [] //実施されているスタンプ名
 var user_stmp_num:[String]? = [] //ユーザーが持っているスタンプの情報
@@ -61,7 +61,6 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
     var className:String? = "" //スタンプ取得状況クラス名
     var NfcClassName:String? = ""//NFC情報クラス名
     let semaphore = DispatchSemaphore(value: 0)
-    let semaphore2 = DispatchSemaphore(value: 0)
     var NFCNum:Int = 0
 
 
@@ -110,13 +109,10 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
             print("セマフォ１")
         })
         
-
-        //self.semaphore2.wait()
         //ユーザーデータクラスの検索
         var query2 : NCMBQuery<NCMBObject> = NCMBQuery.getQuery(className:className!)
         // 自分のユーザーデータを取得
         query2.where(field: "userName", equalTo: playuserName)
-        print("username\(playuserName)")
         query2.findInBackground(callback: { result in
             switch result {
                 case let .success(array2):
@@ -135,14 +131,15 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                                     // 保存に失敗した場合の処理
                                     print("保存に失敗しました: \(error)")
                             }
-                            my_samp_log.append(object)
+                            my_stmp_log.append(object)
                             user_stmp_num = []
                             print("セマフォ２")
                             self.semaphore.signal()
                         })
                     }else{
                         print("ユーザー情報取得完了")
-                        my_samp_log = array2
+                        my_stmp_log = array2
+                        print(my_stmp_log)
                         user_stmp_num = array2[0]["getStamp"]  //配列が空でもok判定となる
                         print("セマフォ3")
                         self.semaphore.signal()
@@ -167,12 +164,10 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                 if user_stmp_num![j] == activeTagName![i]{
                     self.res.append("done")
                     b = true
-                    //print("matched")
                 }
             }
             if b == false   {
                 self.res.append("undone")
-                //print("unmatched")
             }
         }
         
@@ -220,9 +215,11 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                 
                 //ここでタグをすでに持っているか判定（true:持っていない）
                 var judge:Bool = true
+                var selectNum:Int = 0
                 for i in 0..<self.NFCNum{
                     if activeTagID![i] == scanTagID {
                         print("このタグは[\(activeTagName![i])]")
+                        selectNum = i
                         for j in 0..<user_stmp_num!.count{
                             if activeTagName![i] == user_stmp_num![j]{
                                 judge = false
@@ -233,6 +230,27 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                 
                 if judge == true{
                     print("新規スタンプ獲得")
+                    let object : NCMBObject = NCMBObject(className:self.className!)
+                    object.objectId = "9FlvO6naLT2K5Fon"
+                    object["getStamp"] = NCMBAddUniqueOperator(elements: [activeTagName![selectNum] as String])
+                    
+                    // データストアへの登録を実施
+                    object.saveInBackground(callback: { result in
+                        switch result {
+                            case .success:
+                                // 保存に成功した場合の処理
+                                print("保存完了")
+                                user_stmp_num?.append(activeTagName![selectNum])
+                                self.res[selectNum] = "done"
+                                DispatchQueue.main.async {
+                                    print("photos set\(self.res)")
+                                    self.photos = self.res
+                                }
+                            case let .failure(error):
+                                // 保存に失敗した場合の処理
+                                print("保存に失敗しました: \(error)")
+                        }
+                    })
                 }
                 
             }
