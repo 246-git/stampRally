@@ -11,11 +11,10 @@ import CoreNFC
 
 
 var NFC_data:[NCMBObject] = [] //NFCクラスのデータ
-var my_stmp_log:[NCMBObject] = [] //自分のデータ
-var my_obj_id:String? = ""
+var my_obj_id:String? = "" //自分のユーザーデータのobjectId(データ更新用)
 var activeTagID:[String]? = [] //実施されているtagID
 var activeTagName:[String]? = [] //実施されているスタンプ名
-var user_stmp_num:[String]? = [] //ユーザーが持っているスタンプの情報
+var user_stmp_num:[String]? = [] //ユーザーが持っているスタンプの情報(取得した順番)
 
 
 
@@ -132,18 +131,16 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                                     // 保存に失敗した場合の処理
                                     print("保存に失敗しました: \(error)")
                             }
-                            my_stmp_log.append(object)
                             user_stmp_num = []
                             my_obj_id = object.objectId
-                            print("myobjid = \(my_obj_id)")
+                            print("myobjid = \(my_obj_id!)")
                             print("セマフォ２")
                             self.semaphore.signal()
                         })
                     }else{
                         print("ユーザー情報取得完了")
-                        my_stmp_log = array2
                         my_obj_id = array2[0].objectId
-                        print("myobjid = \(my_obj_id)")
+                        print("myobjid = \(my_obj_id!)")
                         user_stmp_num = array2[0]["getStamp"]  //配列が空でもok判定となる
                         print("セマフォ3")
                         self.semaphore.signal()
@@ -235,7 +232,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                 if judge == true{
                     print("新規スタンプ獲得")
                     let object : NCMBObject = NCMBObject(className:self.className!)
-                    object.objectId = "9FlvO6naLT2K5Fon"
+                    object.objectId = my_obj_id
                     object["getStamp"] = NCMBAddUniqueOperator(elements: [activeTagName![selectNum] as String])
                     
                     // データストアへの登録を実施
