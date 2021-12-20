@@ -10,18 +10,16 @@ import NCMB
 import CoreNFC
 
 
-var NFC_data:[NCMBObject] = [] //NFCクラスのデータ
-var my_obj_id:String? = "" //自分のユーザーデータのobjectId(データ更新用)
+var NFC_data:[NCMBObject] = [] //NFCクラスのデータ(showNfcMapでgeoデータを使う)
 var activeTagID:[String]? = [] //実施されているtagID
 var activeTagName:[String]? = [] //実施されているスタンプ名
-var user_stmp_num:[String]? = [] //ユーザーが持っているスタンプの情報(取得した順番)
+var user_stmp_num:[String]? = [] //ユーザーが持っているスタンプの情報(取得順)
 
 
 
 class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    var session: NFCReaderSession?
-    var res:[String] = []
+
     
     @IBOutlet weak var stampBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -62,6 +60,9 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
     var NfcClassName:String? = ""//NFC情報クラス名
     let semaphore = DispatchSemaphore(value: 0)
     var NFCNum:Int = 0
+    var session: NFCReaderSession?
+    var res:[String] = []
+    var my_obj_id:String? = "" //自分のユーザーデータのobjectId(データ更新用)
 
 
     override func viewDidLoad() {
@@ -132,15 +133,15 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                                     print("保存に失敗しました: \(error)")
                             }
                             user_stmp_num = []
-                            my_obj_id = object.objectId
-                            print("myobjid = \(my_obj_id!)")
+                            self.my_obj_id = object.objectId
+                            print("myobjid = \(self.my_obj_id!)")
                             print("セマフォ２")
                             self.semaphore.signal()
                         })
                     }else{
                         print("ユーザー情報取得完了")
-                        my_obj_id = array2[0].objectId
-                        print("myobjid = \(my_obj_id!)")
+                        self.my_obj_id = array2[0].objectId
+                        print("myobjid = \(self.my_obj_id!)")
                         user_stmp_num = array2[0]["getStamp"]  //配列が空でもok判定となる
                         print("セマフォ3")
                         self.semaphore.signal()
@@ -211,12 +212,12 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                 let scanTagID = sTag.identifier.map{ String(format: "%.2hhx", $0)}.joined()
                 print("UID:",scanTagID)
                 print(sTag.identifier)
-                session.alertMessage = "スタンプ完了！"
-                session.invalidate()
+                //session.alertMessage = "スタンプ完了！"
+                //session.invalidate()
                 
                 //ここでタグをすでに持っているか判定（true:持っていない）
                 var judge:Bool = true
-                var selectNum:Int = 0
+                var selectNum:Int = 0  //何番目のタグか
                 for i in 0..<self.NFCNum{
                     if activeTagID![i] == scanTagID {
                         print("このタグは[\(activeTagName![i])]")
@@ -230,9 +231,11 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                 }
                 
                 if judge == true{
+                    session.alertMessage = "スタンプ完了！"
+                    session.invalidate()
                     print("新規スタンプ獲得")
                     let object : NCMBObject = NCMBObject(className:self.className!)
-                    object.objectId = my_obj_id
+                    object.objectId = self.my_obj_id
                     object["getStamp"] = NCMBAddUniqueOperator(elements: [activeTagName![selectNum] as String])
                     
                     // データストアへの登録を実施
@@ -252,6 +255,9 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                                 print("保存に失敗しました: \(error)")
                         }
                     })
+                } else{
+                    session.alertMessage = "すでに持っているスタンプです"
+                    session.invalidate()
                 }
                 
             }
