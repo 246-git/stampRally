@@ -12,6 +12,7 @@ import CoreNFC
 
 var NFC_data:[NCMBObject] = [] //NFCクラスのデータ
 var my_stmp_log:[NCMBObject] = [] //自分のデータ
+var my_obj_id:String? = ""
 var activeTagID:[String]? = [] //実施されているtagID
 var activeTagName:[String]? = [] //実施されているスタンプ名
 var user_stmp_num:[String]? = [] //ユーザーが持っているスタンプの情報
@@ -133,13 +134,16 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                             }
                             my_stmp_log.append(object)
                             user_stmp_num = []
+                            my_obj_id = object.objectId
+                            print("myobjid = \(my_obj_id)")
                             print("セマフォ２")
                             self.semaphore.signal()
                         })
                     }else{
                         print("ユーザー情報取得完了")
                         my_stmp_log = array2
-                        print(my_stmp_log)
+                        my_obj_id = array2[0].objectId
+                        print("myobjid = \(my_obj_id)")
                         user_stmp_num = array2[0]["getStamp"]  //配列が空でもok判定となる
                         print("セマフォ3")
                         self.semaphore.signal()
