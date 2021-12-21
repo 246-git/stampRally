@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
                 case .success:
                     // ログイン成功時の処理
                     DispatchQueue.main.sync {
-                        self.performSegue(withIdentifier: "login", sender: self)
+                        self.performSegue(withIdentifier: "loginToHome", sender: self)
                     }
                     let user:NCMBUser = NCMBUser.currentUser!
                     print("ログインに成功しました:\(String(describing: user.objectId))")

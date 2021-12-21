@@ -20,7 +20,6 @@
 		5A6768BE2677521C00152E07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A6768BC2677521C00152E07 /* LaunchScreen.storyboard */; };
 		5A6768CA26778AA300152E07 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6768C926778AA300152E07 /* LoginViewController.swift */; };
 		5A6768CC26778AD800152E07 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6768CB26778AD800152E07 /* SignUpViewController.swift */; };
-		5A6768CE26778B2F00152E07 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6768CD26778B2F00152E07 /* LogoutViewController.swift */; };
 		5AFBED3A273A0E8800D97367 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AFBED39273A0E8800D97367 /* Home.storyboard */; };
 		5AFBED3E273A374400D97367 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFBED3D273A374400D97367 /* HomeViewController.swift */; };
 		5AFBED4027464FA700D97367 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFBED3F27464FA700D97367 /* DetailViewController.swift */; };
@@ -43,7 +42,6 @@
 		5A6768BF2677521C00152E07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A6768C926778AA300152E07 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5A6768CB26778AD800152E07 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		5A6768CD26778B2F00152E07 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		5A6768CF2677939700152E07 /* Stamp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stamp.entitlements; sourceTree = "<group>"; };
 		5AFBED39273A0E8800D97367 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		5AFBED3D273A374400D97367 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 				5A46ABE6275F245200842CFF /* ShowNfcMapViewController.swift */,
 				5A46ABE42755C2DC00842CFF /* GameViewController.swift */,
 				5AFBED3F27464FA700D97367 /* DetailViewController.swift */,
-				5A6768CD26778B2F00152E07 /* LogoutViewController.swift */,
 				5A6768CB26778AD800152E07 /* SignUpViewController.swift */,
 				5A6768BA2677521C00152E07 /* Assets.xcassets */,
 				5A6768BC2677521C00152E07 /* LaunchScreen.storyboard */,
@@ -246,7 +243,6 @@
 				5A6768B22677521A00152E07 /* AppDelegate.swift in Sources */,
 				5A6768B42677521A00152E07 /* SceneDelegate.swift in Sources */,
 				5A46ABE52755C2DC00842CFF /* GameViewController.swift in Sources */,
-				5A6768CE26778B2F00152E07 /* LogoutViewController.swift in Sources */,
 				5AFBED3E273A374400D97367 /* HomeViewController.swift in Sources */,
 				5A6768CC26778AD800152E07 /* SignUpViewController.swift in Sources */,
 				5AFBED4027464FA700D97367 /* DetailViewController.swift in Sources */,

@@ -104,7 +104,7 @@
                         <outlet property="passwordTextField" destination="hmb-5I-Vhx" id="Bfv-Ih-ED2"/>
                         <outlet property="userNameTextField" destination="Mkl-lw-40A" id="NTf-Xb-g0q"/>
                         <segue destination="Iae-Ww-qkT" kind="push" identifier="loginToSignUp" id="8lg-U7-Ksk"/>
-                        <segue destination="ki4-gQ-udI" kind="presentation" identifier="login" id="tai-VT-N8I"/>
+                        <segue destination="j0f-j8-J1f" kind="presentation" identifier="loginToHome" modalPresentationStyle="fullScreen" id="nom-fI-vb5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XhR-r4-PNT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -202,7 +202,7 @@
                         <outlet property="passwordTextField" destination="hDq-6j-Tlf" id="AqZ-8N-75G"/>
                         <outlet property="passwordTextField_second" destination="4y9-pI-LK4" id="Wwy-EW-s6L"/>
                         <outlet property="userNameTextField" destination="vhB-MV-ydo" id="Vg9-r0-416"/>
-                        <segue destination="ki4-gQ-udI" kind="presentation" identifier="signUp" id="umG-YX-AGH"/>
+                        <segue destination="j0f-j8-J1f" kind="presentation" identifier="signupToHome" modalPresentationStyle="fullScreen" id="3xE-rY-2dP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lfz-Ma-eR1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -214,49 +214,6 @@
             </objects>
             <point key="canvasLocation" x="260" y="120.85308056872037"/>
         </scene>
-        <!--Logout View Controller-->
-        <scene sceneID="TOg-NM-VVr">
-            <objects>
-                <viewController id="ki4-gQ-udI" customClass="LogoutViewController" customModule="Stamp" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1TE-3E-dlB"/>
-                        <viewControllerLayoutGuide type="bottom" id="x8l-rN-8yl"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="u9P-oI-pYY">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ログイン完了" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dio-qw-D93">
-                                <rect key="frame" x="102" y="352" width="200" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDS-gz-Xzs">
-                                <rect key="frame" x="168" y="251" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Log Out"/>
-                                <connections>
-                                    <action selector="logoutBtn:" destination="ki4-gQ-udI" eventType="touchUpInside" id="SJy-Lc-Ubq"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1H-MA-p4y">
-                                <rect key="frame" x="178" y="513" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Start"/>
-                                <connections>
-                                    <segue destination="j0f-j8-J1f" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="tLd-VV-xHY"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="86L-JE-7zX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-165" y="954"/>
-        </scene>
         <!--Home-->
         <scene sceneID="MFL-4M-EYH">
             <objects>
@@ -265,11 +222,11 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6PM-06-3Lf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="612" y="960"/>
+            <point key="canvasLocation" x="-166" y="687"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tai-VT-N8I"/>
+        <segue reference="nom-fI-vb5"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBlueColor">

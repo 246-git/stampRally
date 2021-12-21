@@ -59,7 +59,7 @@ class SignUpViewController: UIViewController {
             switch retult {
             case .success:
                 DispatchQueue.main.sync {
-                    self.performSegue(withIdentifier: "signUp", sender: self)
+                    self.performSegue(withIdentifier: "signupToHome", sender: self)
                 }
                 let user:NCMBUser = NCMBUser.currentUser!
                 print("ログインに成功しました:\(String(describing: user.objectId))")
