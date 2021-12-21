@@ -3,6 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -24,14 +25,13 @@
                                 <color key="textColor" name="AccentColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxj-Us-5Ea">
-                                <rect key="frame" x="324" y="754" width="50" height="34"/>
-                                <color key="backgroundColor" systemColor="systemTealColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="P1l-4J-xLg"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxj-Us-5Ea">
+                                <rect key="frame" x="164" y="759" width="69" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" name="AccentColor"/>
                                 <state key="normal" title="選択">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" name="AccentColor"/>
+                                    <imageReference key="image" image="checkmark.circle" catalog="system" symbolScale="large"/>
                                 </state>
                                 <connections>
                                     <segue destination="Ntp-tJ-DUB" kind="show" identifier="showDetailSegue" id="CPL-Bi-SFp"/>
@@ -56,21 +56,33 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="fUb-C7-22S"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wO3-cJ-jAo">
-                                <rect key="frame" x="16" y="754" width="77" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wO3-cJ-jAo">
+                                <rect key="frame" x="15" y="759" width="119" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="ログアウト"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="ログアウト">
+                                    <color key="titleColor" systemColor="systemRedColor"/>
+                                    <imageReference key="image" image="person.crop.circle.badge.xmark" catalog="system" symbolScale="large"/>
+                                </state>
                                 <connections>
+                                    <action selector="logOut_btn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sDP-aI-6w8"/>
                                     <segue destination="Whr-HL-P2H" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="Ndj-eA-46p"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33i-Ll-hbL">
+                                <rect key="frame" x="284" y="759" width="69" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="更新">
+                                    <color key="titleColor" name="AccentColor"/>
+                                    <imageReference key="image" image="arrow.triangle.2.circlepath" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="reload_btn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="tGg-oS-u1j"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="dxj-Us-5Ea" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="O4g-X8-IB6"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="dxj-Us-5Ea" secondAttribute="bottom" constant="20" id="jfq-MV-MFj"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="開催地一覧" id="zRc-vG-2Kk"/>
                     <connections>
@@ -139,11 +151,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ee-py-efa">
-                                <rect key="frame" x="159" y="752" width="74" height="34"/>
+                                <rect key="frame" x="148" y="757" width="99" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemTealColor"/>
-                                <state key="normal" title="スタート">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="スタート" image="checkmark.circle" catalog="system">
+                                    <color key="titleColor" name="AccentColor"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
                                 <connections>
                                     <segue destination="VmY-6M-kLI" kind="show" identifier="showGameSegue" id="F0D-7g-7T9"/>
@@ -194,14 +206,17 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.triangle.2.circlepath" catalog="system" width="128" height="101"/>
+        <image name="checkmark.circle" catalog="system" width="128" height="121"/>
+        <image name="person.crop.circle.badge.xmark" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

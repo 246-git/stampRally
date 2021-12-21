@@ -3,6 +3,8 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,36 +37,33 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="VjJ-mI-U4z"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cr5-8v-yE5">
-                                <rect key="frame" x="278" y="715" width="77" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tG-Dd-CKb">
+                                <rect key="frame" x="113" y="715" width="165" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="マップ表示"/>
-                                <connections>
-                                    <segue destination="DmB-hx-B6w" kind="push" identifier="showNfcMap" id="5VO-tH-6gn"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tG-Dd-CKb">
-                                <rect key="frame" x="27" y="695" width="150" height="70"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="XFO-rZ-EhV"/>
-                                    <constraint firstAttribute="height" constant="70" id="fAo-Gm-J54"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="pKD-RX-c47"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="スタンプを押す"/>
+                                <color key="tintColor" name="AccentColor"/>
+                                <state key="normal" title="スタンプを押す">
+                                    <color key="titleColor" name="AccentColor"/>
+                                    <imageReference key="image" image="iphone.radiowaves.left.and.right" catalog="system" symbolScale="large" renderingMode="template"/>
+                                </state>
                                 <connections>
                                     <action selector="CaptureBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="G23-3r-sTa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cr5-8v-yE5">
+                                <rect key="frame" x="258" y="770" width="114" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                <state key="normal" title="マップ表示">
+                                    <color key="titleColor" systemColor="systemGreenColor"/>
+                                    <imageReference key="image" image="map" catalog="system" symbolScale="medium"/>
+                                </state>
+                                <connections>
+                                    <segue destination="DmB-hx-B6w" kind="push" identifier="showNfcMap" id="5VO-tH-6gn"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9tG-Dd-CKb" secondAttribute="bottom" constant="45" id="H9N-bp-0f6"/>
-                            <constraint firstItem="9tG-Dd-CKb" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="g54-eS-xkx"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iF7-Zf-Aoj"/>
                     <connections>
@@ -119,11 +118,16 @@
         </scene>
     </scenes>
     <resources>
+        <image name="iphone.radiowaves.left.and.right" catalog="system" width="128" height="86"/>
+        <image name="map" catalog="system" width="128" height="110"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

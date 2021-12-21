@@ -87,6 +87,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    
+    @IBAction func reload_btn(_ sender: Any) {
+        loadView()
+        viewDidLoad()
+    }
+    
     //画面遷移時の情報受け渡し
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "showDetailSegue"{
