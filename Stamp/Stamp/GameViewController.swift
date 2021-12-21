@@ -135,7 +135,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                             }
                             user_stmp_num = []
                             self.my_obj_id = object.objectId
-                            print("myobjid = \(self.my_obj_id!)")
+                            //print("myobjid = \(self.my_obj_id!)")
                             print("セマフォ２")
                             self.semaphore.signal()
                         })
@@ -163,7 +163,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
         //スタンプ画像の表示
         for i in 0..<self.NFCNum{
             var b: Bool = false
-            for j in 0..<user_stmp_num!.count{ //表示順序を何とかする
+            for j in 0..<user_stmp_num!.count{
                 if user_stmp_num![j] == activeTagName![i]{
                     self.res.append("done")
                     b = true
@@ -213,8 +213,6 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                 let scanTagID = sTag.identifier.map{ String(format: "%.2hhx", $0)}.joined()
                 print("UID:",scanTagID)
                 print(sTag.identifier)
-                //session.alertMessage = "スタンプ完了！"
-                //session.invalidate()
                 
                 //ここでタグをすでに持っているか判定（true:持っていない）
                 var judge:Bool = false
@@ -232,7 +230,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                     }
                         
                 }
-                
+                //新規スタンプなら
                 if judge == true{
                     session.alertMessage = "[\(activeTagName![selectNum])]スタンプ獲得"
                     session.invalidate()
@@ -259,8 +257,6 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                         }
                     })
                 } else{
-                    /*session.alertMessage = "取得済みもしくは存在しないスタンプです"
-                    session.invalidate()*/
                     session.invalidate(errorMessage: "取得済みもしくは存在しないスタンプです")
                 }
                 

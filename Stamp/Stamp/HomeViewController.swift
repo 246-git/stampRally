@@ -15,6 +15,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     @IBOutlet weak var tableView: UITableView!
+    @IBAction func logOut_btn(_ sender: Any) {
+        NCMBUser.logOut()
+    }
     
     
     //会場名
