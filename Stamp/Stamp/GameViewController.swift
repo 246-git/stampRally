@@ -240,7 +240,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                     object.objectId = self.my_obj_id
                     object["getStamp"] = NCMBAddUniqueOperator(elements: [activeTagName![selectNum] as String])
                     
-                    // データストアへの登録を実施
+                    // ユーザーデータのgetStampに追加
                     object.saveInBackground(callback: { result in
                         switch result {
                             case .success:
@@ -258,8 +258,9 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                         }
                     })
                 } else{
-                    session.alertMessage = "取得済みもしくは存在しないスタンプです"
-                    session.invalidate()
+                    /*session.alertMessage = "取得済みもしくは存在しないスタンプです"
+                    session.invalidate()*/
+                    session.invalidate(errorMessage: "取得済みもしくは存在しないスタンプです")
                 }
                 
             }
