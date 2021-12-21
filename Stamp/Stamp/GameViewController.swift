@@ -216,10 +216,11 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                 //session.invalidate()
                 
                 //ここでタグをすでに持っているか判定（true:持っていない）
-                var judge:Bool = true
+                var judge:Bool = false
                 var selectNum:Int = 0  //何番目のタグか
                 for i in 0..<self.NFCNum{
                     if activeTagID![i] == scanTagID {
+                        judge = true
                         print("このタグは[\(activeTagName![i])]")
                         selectNum = i
                         for j in 0..<user_stmp_num!.count{
@@ -228,10 +229,11 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                             }
                         }
                     }
+                        
                 }
                 
                 if judge == true{
-                    session.alertMessage = "スタンプ完了！"
+                    session.alertMessage = "[\(activeTagName![selectNum])]スタンプ獲得"
                     session.invalidate()
                     print("新規スタンプ獲得")
                     let object : NCMBObject = NCMBObject(className:self.className!)
@@ -256,7 +258,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
                         }
                     })
                 } else{
-                    session.alertMessage = "すでに持っているスタンプです"
+                    session.alertMessage = "取得済みもしくは存在しないスタンプです"
                     session.invalidate()
                 }
                 
