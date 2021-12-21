@@ -78,6 +78,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
         var query : NCMBQuery<NCMBObject> = NCMBQuery.getQuery(className:NfcClassName!)
         // runの値が 1 と一致(実施中のスタンプラリー)
         query.where(field: "run", equalTo: 1)
+        query.order = ["priority"]
         
         query.findInBackground(callback: { result in
             switch result {
