@@ -20,6 +20,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         UserDefaults.standard.removeObject(forKey: "userName")//userdefaultsのデータを消しておく
         UserDefaults.standard.removeObject(forKey: "password")
     } //log outボタン
+    @IBOutlet weak var username_label: UILabel!
+    
     
     var userpage_btn: UIBarButtonItem!  //userページに飛ぶ用のボタン
     
@@ -50,11 +52,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
 
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let text = NSMutableAttributedString(string: "")
+        text.append(NSAttributedString(attachment: NSTextAttachment(image: UIImage(systemName: "person.circle")!)))
+        text.append(NSAttributedString(string: playuserName))
+        self.username_label!.attributedText = text
+        self.username_label.font = UIFont.systemFont(ofSize: 25)
+        self.username_label.textColor = .red
+        self.username_label.sizeToFit()
+        
+
         userpage_btn = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reload_btn(_:)))
         self.navigationItem.rightBarButtonItem = userpage_btn
         
