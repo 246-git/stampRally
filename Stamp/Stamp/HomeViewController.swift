@@ -21,7 +21,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         UserDefaults.standard.removeObject(forKey: "password")
     } //log outボタン
     
-    //var userpage_btn: UIBarButtonItem!  //userページに飛ぶ用のボタン
+    var userpage_btn: UIBarButtonItem!  //userページに飛ぶ用のボタン
     
     //会場名
     var venueName:[String] = []{
@@ -55,10 +55,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //userpage_btn = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reload_btn(_:)))
-        //userpage_btn = UIBarButtonItem(image: UIImage(named: "person.circle"),
-                                       //style: UIBarButtonItemStyle.plain, target: self, action: #selector(reload_btn(_:))
-        //self.navigationItem.rightBarButtonItem = userpage_btn
+        userpage_btn = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reload_btn(_:)))
+        self.navigationItem.rightBarButtonItem = userpage_btn
         
         // クエリの作成。rallyから探す
         var query : NCMBQuery<NCMBObject> = NCMBQuery.getQuery(className: "Rally")
@@ -94,7 +92,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    @IBAction func reload_btn(_ sender: Any) {
+    @objc func reload_btn(_ sender: UIBarButtonItem) {
         loadView()
         viewDidLoad()
     }

@@ -76,9 +76,6 @@
                                     <color key="titleColor" name="AccentColor"/>
                                     <imageReference key="image" image="arrow.triangle.2.circlepath" catalog="system" symbolScale="large"/>
                                 </state>
-                                <connections>
-                                    <action selector="reload_btn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="tGg-oS-u1j"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
