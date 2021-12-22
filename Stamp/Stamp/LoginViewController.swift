@@ -19,9 +19,35 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         //passwordをセキリュティ入力
         self.passwordTextField.isSecureTextEntry = true
+        
+        let defName:String? = UserDefaults.standard.string(forKey: "userName")
+        let defPass:String? = UserDefaults.standard.string(forKey: "password")
+        
+        if defName != nil  && defPass != nil{
+            NCMBUser.logInInBackground(userName: defName!, password: defPass!,
+            callback: { result in
+                
+                switch result {
+                    case .success:
+                        // ログイン成功時の処理
+                        DispatchQueue.main.sync {
+                            self.performSegue(withIdentifier: "loginToHome", sender: self)
+                        }
+                        let user:NCMBUser = NCMBUser.currentUser!
+                        print("ログインに成功しました:\(String(describing: user.objectId))")
+                        playuserName = user.userName!
+                    case let .failure(error):
+                        // 保存に失敗した場合の処理
+                        DispatchQueue.main.sync {
+                            self.errorLabel.text = "自動ログイン失敗:\(error)"
+                        }
+                        print("ログインに失敗しました:\(error)")
+                }
+                
+            })
+        }
     }
     
     //Lgoinボタン押した時
@@ -39,10 +65,6 @@ class LoginViewController: UIViewController {
         //ログイン
         NCMBUser.logInInBackground(userName: userNameTextField.text!, password: passwordTextField.text!,
         callback: { result in
-            //textfield空に
-            DispatchQueue.main.sync{
-                self.cleanTextField()
-            }
             
             switch result {
                 case .success:
@@ -52,6 +74,13 @@ class LoginViewController: UIViewController {
                     }
                     let user:NCMBUser = NCMBUser.currentUser!
                     print("ログインに成功しました:\(String(describing: user.objectId))")
+                    
+                    DispatchQueue.main.async {
+                        UserDefaults.standard.set(self.userNameTextField.text! , forKey: "userName")
+                        UserDefaults.standard.set(self.passwordTextField.text! , forKey: "password")
+                        print("setUD")
+                        self.cleanTextField()
+                    }
                     playuserName = user.userName!
                 case let .failure(error):
                     // 保存に失敗した場合の処理

@@ -9,20 +9,25 @@ import UIKit
 import NCMB
 import CoreNFC
 
-
 var NFC_data:[NCMBObject] = [] //NFCクラスのデータ(showNfcMapでgeoデータを使う)
 var activeTagID:[String]? = [] //実施されているtagID
 var activeTagName:[String]? = [] //実施されているスタンプ名
 var user_stmp_num:[String]? = [] //ユーザーが持っているスタンプの情報(取得順)
 
 
-
 class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITableViewDelegate, UITableViewDataSource {
-    
-
     
     @IBOutlet weak var stampBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    
+    var sNum:Int = 0    //選択したマップの番号
+    var className:String? = "" //スタンプ取得状況クラス名
+    var NfcClassName:String? = ""//NFC情報クラス名
+    let semaphore = DispatchSemaphore(value: 0)
+    var NFCNum:Int = 0
+    var session: NFCReaderSession?
+    var res:[String] = []
+    var my_obj_id:String? = "" //自分のユーザーデータのobjectId(データ更新用)
     
     var NFCNumRes:Int = 0{
         didSet{
@@ -54,15 +59,6 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
             return 70
     }
 
-    
-    var sNum:Int = 0    //選択したマップの番号
-    var className:String? = "" //スタンプ取得状況クラス名
-    var NfcClassName:String? = ""//NFC情報クラス名
-    let semaphore = DispatchSemaphore(value: 0)
-    var NFCNum:Int = 0
-    var session: NFCReaderSession?
-    var res:[String] = []
-    var my_obj_id:String? = "" //自分のユーザーデータのobjectId(データ更新用)
 
 
     override func viewDidLoad() {

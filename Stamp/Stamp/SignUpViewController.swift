@@ -51,10 +51,6 @@ class SignUpViewController: UIViewController {
         
         //会員登録を行う resultの使い方
         user.signUpInBackground(callback: {retult in
-            //tectfield空に
-            DispatchQueue.main.sync {
-                self.cleanTextField()
-            }
             
             switch retult {
             case .success:
@@ -63,6 +59,13 @@ class SignUpViewController: UIViewController {
                 }
                 let user:NCMBUser = NCMBUser.currentUser!
                 print("ログインに成功しました:\(String(describing: user.objectId))")
+                
+                DispatchQueue.main.async {
+                    UserDefaults.standard.set(self.userNameTextField.text! , forKey: "userName")
+                    UserDefaults.standard.set(self.passwordTextField.text! , forKey: "password")
+                    print("setUD")
+                    self.cleanTextField()
+                }
                 playuserName = user.userName!
                 
             case let .failure(error):

@@ -17,8 +17,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     @IBAction func logOut_btn(_ sender: Any) {
         NCMBUser.logOut()
-    }
+        UserDefaults.standard.removeObject(forKey: "userName")//userdefaultsのデータを消しておく
+        UserDefaults.standard.removeObject(forKey: "password")
+    } //log outボタン
     
+    //var userpage_btn: UIBarButtonItem!  //userページに飛ぶ用のボタン
     
     //会場名
     var venueName:[String] = []{
@@ -52,7 +55,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        //userpage_btn = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reload_btn(_:)))
+        //userpage_btn = UIBarButtonItem(image: UIImage(named: "person.circle"),
+                                       //style: UIBarButtonItemStyle.plain, target: self, action: #selector(reload_btn(_:))
+        //self.navigationItem.rightBarButtonItem = userpage_btn
         
         // クエリの作成。rallyから探す
         var query : NCMBQuery<NCMBObject> = NCMBQuery.getQuery(className: "Rally")
