@@ -76,7 +76,6 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="eEH-qF-Yob" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="3Hf-Bj-8pI"/>
                             <constraint firstItem="wO3-cJ-jAo" firstAttribute="leading" secondItem="EiX-o7-SzB" secondAttribute="leading" id="545-yD-hhT"/>
                             <constraint firstItem="eEH-qF-Yob" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.7" id="5tq-i8-o7K"/>
                             <constraint firstItem="33i-Ll-hbL" firstAttribute="top" secondItem="wO3-cJ-jAo" secondAttribute="top" id="Bbg-wq-4AQ"/>
@@ -119,48 +118,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="イベント情報" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bp-e0-Rcf">
-                                <rect key="frame" x="143" y="56" width="104" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" name="AccentColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4h-qd-q2Q">
-                                <rect key="frame" x="166" y="103" width="201" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4h-qd-q2Q">
+                                <rect key="frame" x="159" y="103" width="41.333333333333343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ゲームタイプ：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hl3-fs-SUC">
-                                <rect key="frame" x="39" y="129" width="122" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ゲームタイプ：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hl3-fs-SUC">
+                                <rect key="frame" x="22" y="129" width="122" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDl-n3-zUv">
-                                <rect key="frame" x="166" y="131" width="201" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDl-n3-zUv">
+                                <rect key="frame" x="159" y="129" width="41.333333333333343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="イベント名：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgc-lJ-e7E">
-                                <rect key="frame" x="39" y="103" width="104" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="イベント名：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgc-lJ-e7E">
+                                <rect key="frame" x="40" y="103" width="104" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gE9-OM-Q80">
-                                <rect key="frame" x="0.0" y="214" width="390" height="477"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gE9-OM-Q80">
+                                <rect key="frame" x="0.0" y="180" width="390" height="548.66666666666663"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ee-py-efa">
-                                <rect key="frame" x="148" y="757" width="99" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ee-py-efa">
+                                <rect key="frame" x="145.66666666666666" y="763.66666666666663" width="99" height="24"/>
                                 <state key="normal" title="スタート" image="checkmark.circle" catalog="system">
                                     <color key="titleColor" name="AccentColor"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
@@ -172,6 +158,22 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="b5P-YI-nx5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9Ee-py-efa" firstAttribute="centerX" secondItem="DDj-RI-yrG" secondAttribute="centerX" id="32q-hG-cRo"/>
+                            <constraint firstItem="gE9-OM-Q80" firstAttribute="top" secondItem="Hl3-fs-SUC" secondAttribute="bottom" constant="30" id="CyF-p7-mpE"/>
+                            <constraint firstItem="YDl-n3-zUv" firstAttribute="top" secondItem="Hl3-fs-SUC" secondAttribute="top" id="Heq-XQ-AbU"/>
+                            <constraint firstItem="gE9-OM-Q80" firstAttribute="height" secondItem="DDj-RI-yrG" secondAttribute="height" multiplier="0.65" id="JI7-9u-leR"/>
+                            <constraint firstItem="9Ee-py-efa" firstAttribute="top" secondItem="gE9-OM-Q80" secondAttribute="bottom" constant="35" id="JMi-9V-qWp"/>
+                            <constraint firstItem="Hl3-fs-SUC" firstAttribute="trailing" secondItem="Zgc-lJ-e7E" secondAttribute="trailing" id="WnH-En-HWH"/>
+                            <constraint firstItem="YDl-n3-zUv" firstAttribute="leading" secondItem="Hl3-fs-SUC" secondAttribute="trailing" constant="15" id="Z3s-zb-rYV"/>
+                            <constraint firstItem="gE9-OM-Q80" firstAttribute="leading" secondItem="b5P-YI-nx5" secondAttribute="leading" id="aWv-ES-5Fm"/>
+                            <constraint firstItem="Zgc-lJ-e7E" firstAttribute="leading" secondItem="b5P-YI-nx5" secondAttribute="leading" constant="40" id="bqC-a8-JIY"/>
+                            <constraint firstItem="Hl3-fs-SUC" firstAttribute="top" secondItem="Zgc-lJ-e7E" secondAttribute="bottom" constant="5" id="eMy-ha-dgg"/>
+                            <constraint firstItem="t4h-qd-q2Q" firstAttribute="leading" secondItem="Zgc-lJ-e7E" secondAttribute="trailing" constant="15" id="jcQ-Sa-mdg"/>
+                            <constraint firstItem="gE9-OM-Q80" firstAttribute="trailing" secondItem="b5P-YI-nx5" secondAttribute="trailing" id="oKQ-cL-HEv"/>
+                            <constraint firstItem="Zgc-lJ-e7E" firstAttribute="top" secondItem="b5P-YI-nx5" secondAttribute="top" constant="15" id="oZA-yE-d6k"/>
+                            <constraint firstItem="t4h-qd-q2Q" firstAttribute="top" secondItem="Zgc-lJ-e7E" secondAttribute="top" id="t2O-6G-rdo"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="詳細情報" id="RIS-N8-xqA"/>
                     <connections>
