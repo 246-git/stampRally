@@ -59,7 +59,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         text.append(NSAttributedString(attachment: NSTextAttachment(image: UIImage(systemName: "person.circle")!)))
         text.append(NSAttributedString(string: playuserName))
         self.username_label!.attributedText = text
-        self.username_label.font = UIFont.systemFont(ofSize: 25)
+        self.username_label.font = UIFont.systemFont(ofSize: 21)
         self.username_label.textColor = .red
         self.username_label.sizeToFit()
         
