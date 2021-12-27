@@ -42,6 +42,7 @@ class LoginViewController: UIViewController {
                         // 保存に失敗した場合の処理
                         DispatchQueue.main.sync {
                             self.errorLabel.text = "自動ログイン失敗:\(error)"
+                            self.errorLabel.sizeToFit()
                         }
                         print("ログインに失敗しました:\(error)")
                 }

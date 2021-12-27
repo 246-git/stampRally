@@ -90,14 +90,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="詳細情報" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wK-A6-nGf">
-                                <rect key="frame" x="15" y="56.000000000000007" width="69.333333333333329" height="20.333333333333336"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="詳細情報" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wK-A6-nGf">
+                                <rect key="frame" x="15" y="55.333333333333336" width="360" height="20.333333333333336"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="スタンプ名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVx-HV-MlM">
-                                <rect key="frame" x="15" y="25" width="86.666666666666671" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="スタンプ名" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVx-HV-MlM">
+                                <rect key="frame" x="15" y="25" width="360" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -115,6 +115,8 @@
                             <constraint firstItem="KGC-o8-xBT" firstAttribute="height" secondItem="BEX-V4-Un8" secondAttribute="height" multiplier="0.7" id="Mbj-2k-G7o"/>
                             <constraint firstItem="9wK-A6-nGf" firstAttribute="leading" secondItem="OVx-HV-MlM" secondAttribute="leading" id="NfX-6w-LbD"/>
                             <constraint firstItem="OVx-HV-MlM" firstAttribute="top" secondItem="B8P-bT-Tur" secondAttribute="top" constant="25" id="eHD-I6-WV0"/>
+                            <constraint firstItem="B8P-bT-Tur" firstAttribute="trailing" secondItem="OVx-HV-MlM" secondAttribute="trailing" constant="15" id="jlE-8N-Zsd"/>
+                            <constraint firstItem="B8P-bT-Tur" firstAttribute="trailing" secondItem="9wK-A6-nGf" secondAttribute="trailing" constant="15" id="tmS-Uq-TfN"/>
                             <constraint firstItem="OVx-HV-MlM" firstAttribute="leading" secondItem="B8P-bT-Tur" secondAttribute="leading" constant="15" id="uFr-lx-y8D"/>
                             <constraint firstItem="KGC-o8-xBT" firstAttribute="trailing" secondItem="B8P-bT-Tur" secondAttribute="trailing" id="unh-lU-SSD"/>
                             <constraint firstItem="KGC-o8-xBT" firstAttribute="leading" secondItem="B8P-bT-Tur" secondAttribute="leading" id="v3O-xK-yjk"/>

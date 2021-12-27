@@ -71,6 +71,7 @@ class SignUpViewController: UIViewController {
             case let .failure(error):
                 // 新規登録失敗時の処理
                 self.errorLabel.text = "ログインに失敗しました:\(error)"
+                self.errorLabel.sizeToFit()
                 print("ログインに失敗しました:\(error)")
             }
         })

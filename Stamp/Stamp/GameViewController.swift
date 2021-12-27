@@ -20,7 +20,6 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
     @IBOutlet weak var stampBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
-    var sNum:Int = 0    //選択したマップの番号
     var className:String? = "" //スタンプ取得状況クラス名
     var NfcClassName:String? = ""//NFC情報クラス名
     let semaphore = DispatchSemaphore(value: 0)
@@ -67,7 +66,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
         //ボタンに丸みをもたせる
         self.stampBtn.layer.cornerRadius = 10.0
         
-        className = global_data[sNum]["className"] //検索対象のクラス名
+        className = global_data[global_sNum]["className"] //検索対象のクラス名
         NfcClassName = className! + "NFC"
         
         // NFCクラスの検索

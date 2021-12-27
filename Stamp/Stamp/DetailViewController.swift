@@ -17,7 +17,6 @@ class DetailViewController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var game_type: UILabel!
     @IBOutlet weak var venue_Map: MKMapView!
     
-    var sNum:Int = 0    //選択したマップの番号
     var locationManager: CLLocationManager! //現在地表示用
     
     override func viewDidLoad() {
@@ -30,11 +29,11 @@ class DetailViewController: UIViewController,CLLocationManagerDelegate {
         locationManager!.requestWhenInUseAuthorization()
         
         //ラベル編集
-        event_name.text = global_data[sNum]["name"]
-        game_type.text = global_data[sNum]["gameType"]
+        event_name.text = global_data[global_sNum]["name"]
+        game_type.text = global_data[global_sNum]["gameType"]
         
         //マップ表示設定
-        let geo: NCMBGeoPoint? = global_data[sNum]["location"] // 位置情報
+        let geo: NCMBGeoPoint? = global_data[global_sNum]["location"] // 位置情報
         let center = CLLocationCoordinate2DMake(geo!.latitude, geo!.longitude)
          
         //表示範囲
@@ -45,8 +44,8 @@ class DetailViewController: UIViewController,CLLocationManagerDelegate {
         
         let annotation = MKPointAnnotation()
         annotation.coordinate = center
-        annotation.title = global_data[sNum]["name"]
-        annotation.subtitle = global_data[sNum]["gameType"]
+        annotation.title = global_data[global_sNum]["name"]
+        annotation.subtitle = global_data[global_sNum]["gameType"]
         self.venue_Map.addAnnotation(annotation)
 
         // Do any additional setup after loading the view.
@@ -71,18 +70,6 @@ class DetailViewController: UIViewController,CLLocationManagerDelegate {
                 default:
                     break
                 }
-    }
-    
-    //gameViewにsNum受け渡し
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        if segue.identifier == "showGameSegue"{
-            guard let destination = segue.destination as? GameViewController else {
-                fatalError("Failed to prepare GameViewController")
-            }
-            
-            destination.sNum = self.sNum
-        }
-        
     }
     
     

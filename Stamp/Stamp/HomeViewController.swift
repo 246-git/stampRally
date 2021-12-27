@@ -8,8 +8,10 @@
 import UIKit
 import NCMB
 
-//グローバル
+//選択したイベントデータ
 var global_data:[NCMBObject] = []
+//選択したイベントの配列番号
+var global_sNum:Int = 0
 //スタンプラリー選択画面の処理
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -113,8 +115,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 guard let destination = segue.destination as? DetailViewController else {
                     fatalError("Failed to prepare DetailViewController")
                 }
-                
-                destination.sNum = indexPath.row
+                global_sNum = indexPath.row
             }
         }
     }
