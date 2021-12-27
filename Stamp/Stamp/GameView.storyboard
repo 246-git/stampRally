@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ewh-Zg-z9f">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -10,7 +10,25 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Game View Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="bkY-SW-AWu">
+            <objects>
+                <tabBarController id="Ewh-Zg-z9f" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LDy-T8-rmx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="viewControllers" id="xS4-MX-Uru"/>
+                        <segue destination="DmB-hx-B6w" kind="relationship" relationship="viewControllers" id="x2P-d5-CcG"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ww-8W-ycL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="905" y="102"/>
+        </scene>
+        <!--Home-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="GameViewController" customModule="Stamp" customModuleProvider="target" sceneMemberID="viewController">
@@ -37,7 +55,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tG-Dd-CKb">
-                                <rect key="frame" x="112.66666666666669" y="684.66666666666663" width="165" height="25"/>
+                                <rect key="frame" x="112.66666666666669" y="686" width="165" height="25"/>
                                 <color key="tintColor" name="AccentColor"/>
                                 <state key="normal" title="スタンプを押す">
                                     <color key="titleColor" name="AccentColor"/>
@@ -47,31 +65,19 @@
                                     <action selector="CaptureBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="G23-3r-sTa"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cr5-8v-yE5">
-                                <rect key="frame" x="258" y="739.66666666666663" width="114" height="22"/>
-                                <color key="tintColor" systemColor="systemGreenColor"/>
-                                <state key="normal" title="マップ表示">
-                                    <color key="titleColor" systemColor="systemGreenColor"/>
-                                    <imageReference key="image" image="map" catalog="system" symbolScale="medium"/>
-                                </state>
-                                <connections>
-                                    <segue destination="DmB-hx-B6w" kind="push" identifier="showNfcMap" id="5VO-tH-6gn"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="cr5-8v-yE5" firstAttribute="top" secondItem="9tG-Dd-CKb" secondAttribute="bottom" constant="30" id="44h-GU-wjF"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cr5-8v-yE5" secondAttribute="trailing" constant="18" id="FnS-Sh-TzI"/>
                             <constraint firstItem="tv7-vc-2bx" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="LLu-Oh-NN8"/>
                             <constraint firstItem="tv7-vc-2bx" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="PQp-rZ-PaG"/>
                             <constraint firstItem="tv7-vc-2bx" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.7" id="Uyq-bS-PSX"/>
-                            <constraint firstItem="9tG-Dd-CKb" firstAttribute="top" secondItem="tv7-vc-2bx" secondAttribute="bottom" constant="50" id="VOx-DJ-BKn"/>
                             <constraint firstItem="tv7-vc-2bx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="eN0-ne-qLw"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9tG-Dd-CKb" secondAttribute="bottom" constant="50" id="mxi-Uu-nb0"/>
                             <constraint firstItem="9tG-Dd-CKb" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="z0q-br-JhH"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="H5y-ZS-mTc"/>
                     <navigationItem key="navigationItem" id="iF7-Zf-Aoj"/>
                     <connections>
                         <outlet property="stampBtn" destination="9tG-Dd-CKb" id="Fjm-SM-zxl"/>
@@ -80,30 +86,30 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1995.3846153846152" y="98.104265402843595"/>
+            <point key="canvasLocation" x="2117" y="-250"/>
         </scene>
-        <!--Show Nfc Map View Controller-->
+        <!--Map-->
         <scene sceneID="LRl-uj-If6">
             <objects>
                 <viewController id="DmB-hx-B6w" customClass="ShowNfcMapViewController" customModule="Stamp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BEX-V4-Un8">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="詳細情報" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wK-A6-nGf">
-                                <rect key="frame" x="15" y="55.333333333333336" width="360" height="20.333333333333336"/>
+                                <rect key="frame" x="15" y="99.333333333333329" width="360" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="スタンプ名" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVx-HV-MlM">
-                                <rect key="frame" x="15" y="25" width="360" height="20.333333333333329"/>
+                                <rect key="frame" x="15" y="69" width="360" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGC-o8-xBT">
-                                <rect key="frame" x="0.0" y="203" width="390" height="553"/>
+                                <rect key="frame" x="0.0" y="187" width="390" height="574"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="B8P-bT-Tur"/>
@@ -112,7 +118,7 @@
                             <constraint firstItem="B8P-bT-Tur" firstAttribute="bottom" secondItem="KGC-o8-xBT" secondAttribute="bottom" id="5GF-ew-8P4"/>
                             <constraint firstItem="9wK-A6-nGf" firstAttribute="top" secondItem="OVx-HV-MlM" secondAttribute="bottom" constant="10" id="Bpr-8e-fX7"/>
                             <constraint firstItem="9wK-A6-nGf" firstAttribute="leading" secondItem="B8P-bT-Tur" secondAttribute="leading" constant="15" id="Ghh-oE-pi8"/>
-                            <constraint firstItem="KGC-o8-xBT" firstAttribute="height" secondItem="BEX-V4-Un8" secondAttribute="height" multiplier="0.7" id="Mbj-2k-G7o"/>
+                            <constraint firstItem="KGC-o8-xBT" firstAttribute="height" secondItem="BEX-V4-Un8" secondAttribute="height" multiplier="0.68" id="Mbj-2k-G7o"/>
                             <constraint firstItem="9wK-A6-nGf" firstAttribute="leading" secondItem="OVx-HV-MlM" secondAttribute="leading" id="NfX-6w-LbD"/>
                             <constraint firstItem="OVx-HV-MlM" firstAttribute="top" secondItem="B8P-bT-Tur" secondAttribute="top" constant="25" id="eHD-I6-WV0"/>
                             <constraint firstItem="B8P-bT-Tur" firstAttribute="trailing" secondItem="OVx-HV-MlM" secondAttribute="trailing" constant="15" id="jlE-8N-Zsd"/>
@@ -122,6 +128,7 @@
                             <constraint firstItem="KGC-o8-xBT" firstAttribute="leading" secondItem="B8P-bT-Tur" secondAttribute="leading" id="v3O-xK-yjk"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="vuZ-jx-Vbm"/>
                     <navigationItem key="navigationItem" id="h8z-wj-lEK"/>
                     <connections>
                         <outlet property="NfcMap" destination="KGC-o8-xBT" id="Qcg-CA-cQK"/>
@@ -131,10 +138,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PcB-Qq-ahK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2873.8461538461538" y="101.65876777251184"/>
+            <point key="canvasLocation" x="2117" y="432"/>
         </scene>
     </scenes>
     <resources>
+        <image name="house" catalog="system" width="128" height="106"/>
         <image name="iphone.radiowaves.left.and.right" catalog="system" width="128" height="86"/>
         <image name="map" catalog="system" width="128" height="110"/>
         <namedColor name="AccentColor">
@@ -142,9 +150,6 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

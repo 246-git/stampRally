@@ -62,7 +62,7 @@ class GameViewController: UIViewController, NFCTagReaderSessionDelegate, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "スタンプ画面"
+        //self.title = "スタンプ画面"
         //ボタンに丸みをもたせる
         self.stampBtn.layer.cornerRadius = 10.0
         
