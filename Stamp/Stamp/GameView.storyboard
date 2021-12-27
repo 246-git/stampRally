@@ -18,9 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tv7-vc-2bx">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="687"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tv7-vc-2bx">
+                                <rect key="frame" x="0.0" y="44" width="390" height="590.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="stampCell" id="iA0-cn-ME2">
@@ -37,9 +36,8 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="VjJ-mI-U4z"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tG-Dd-CKb">
-                                <rect key="frame" x="113" y="715" width="165" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tG-Dd-CKb">
+                                <rect key="frame" x="112.66666666666669" y="684.66666666666663" width="165" height="25"/>
                                 <color key="tintColor" name="AccentColor"/>
                                 <state key="normal" title="スタンプを押す">
                                     <color key="titleColor" name="AccentColor"/>
@@ -49,9 +47,8 @@
                                     <action selector="CaptureBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="G23-3r-sTa"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cr5-8v-yE5">
-                                <rect key="frame" x="258" y="770" width="114" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cr5-8v-yE5">
+                                <rect key="frame" x="258" y="739.66666666666663" width="114" height="22"/>
                                 <color key="tintColor" systemColor="systemGreenColor"/>
                                 <state key="normal" title="マップ表示">
                                     <color key="titleColor" systemColor="systemGreenColor"/>
@@ -64,6 +61,16 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cr5-8v-yE5" firstAttribute="top" secondItem="9tG-Dd-CKb" secondAttribute="bottom" constant="30" id="44h-GU-wjF"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cr5-8v-yE5" secondAttribute="trailing" constant="18" id="FnS-Sh-TzI"/>
+                            <constraint firstItem="tv7-vc-2bx" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="LLu-Oh-NN8"/>
+                            <constraint firstItem="tv7-vc-2bx" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="PQp-rZ-PaG"/>
+                            <constraint firstItem="tv7-vc-2bx" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.7" id="Uyq-bS-PSX"/>
+                            <constraint firstItem="9tG-Dd-CKb" firstAttribute="top" secondItem="tv7-vc-2bx" secondAttribute="bottom" constant="50" id="VOx-DJ-BKn"/>
+                            <constraint firstItem="tv7-vc-2bx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="eN0-ne-qLw"/>
+                            <constraint firstItem="9tG-Dd-CKb" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="z0q-br-JhH"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iF7-Zf-Aoj"/>
                     <connections>
@@ -83,27 +90,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGC-o8-xBT">
-                                <rect key="frame" x="0.0" y="209" width="390" height="547"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="詳細情報" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wK-A6-nGf">
+                                <rect key="frame" x="15" y="56.000000000000007" width="69.333333333333329" height="20.333333333333336"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="スタンプ名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVx-HV-MlM">
+                                <rect key="frame" x="15" y="25" width="86.666666666666671" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGC-o8-xBT">
+                                <rect key="frame" x="0.0" y="203" width="390" height="553"/>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="詳細情報" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wK-A6-nGf">
-                                <rect key="frame" x="16" y="140" width="333" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="スタンプ名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVx-HV-MlM">
-                                <rect key="frame" x="16" y="124" width="333" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="B8P-bT-Tur"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="B8P-bT-Tur" firstAttribute="bottom" secondItem="KGC-o8-xBT" secondAttribute="bottom" id="5GF-ew-8P4"/>
+                            <constraint firstItem="9wK-A6-nGf" firstAttribute="top" secondItem="OVx-HV-MlM" secondAttribute="bottom" constant="10" id="Bpr-8e-fX7"/>
+                            <constraint firstItem="9wK-A6-nGf" firstAttribute="leading" secondItem="B8P-bT-Tur" secondAttribute="leading" constant="15" id="Ghh-oE-pi8"/>
+                            <constraint firstItem="KGC-o8-xBT" firstAttribute="height" secondItem="BEX-V4-Un8" secondAttribute="height" multiplier="0.7" id="Mbj-2k-G7o"/>
+                            <constraint firstItem="9wK-A6-nGf" firstAttribute="leading" secondItem="OVx-HV-MlM" secondAttribute="leading" id="NfX-6w-LbD"/>
+                            <constraint firstItem="OVx-HV-MlM" firstAttribute="top" secondItem="B8P-bT-Tur" secondAttribute="top" constant="25" id="eHD-I6-WV0"/>
+                            <constraint firstItem="OVx-HV-MlM" firstAttribute="leading" secondItem="B8P-bT-Tur" secondAttribute="leading" constant="15" id="uFr-lx-y8D"/>
+                            <constraint firstItem="KGC-o8-xBT" firstAttribute="trailing" secondItem="B8P-bT-Tur" secondAttribute="trailing" id="unh-lU-SSD"/>
+                            <constraint firstItem="KGC-o8-xBT" firstAttribute="leading" secondItem="B8P-bT-Tur" secondAttribute="leading" id="v3O-xK-yjk"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="h8z-wj-lEK"/>
                     <connections>
