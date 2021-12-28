@@ -41,13 +41,6 @@
                                     <segue destination="Whr-HL-P2H" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="Ndj-eA-46p"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33i-Ll-hbL">
-                                <rect key="frame" x="277.66666666666669" y="759.66666666666663" width="62.333333333333314" height="24"/>
-                                <state key="normal" title="User">
-                                    <color key="titleColor" name="AccentColor"/>
-                                    <imageReference key="image" image="person.circle" catalog="system" symbolScale="large"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EiX-o7-SzB">
                                 <rect key="frame" x="15" y="713.66666666666663" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -78,7 +71,6 @@
                         <constraints>
                             <constraint firstItem="wO3-cJ-jAo" firstAttribute="leading" secondItem="EiX-o7-SzB" secondAttribute="leading" id="545-yD-hhT"/>
                             <constraint firstItem="eEH-qF-Yob" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.7" id="5tq-i8-o7K"/>
-                            <constraint firstItem="33i-Ll-hbL" firstAttribute="top" secondItem="wO3-cJ-jAo" secondAttribute="top" id="Bbg-wq-4AQ"/>
                             <constraint firstItem="eEH-qF-Yob" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="JLq-vL-lka"/>
                             <constraint firstItem="dxj-Us-5Ea" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="TwP-uo-klC"/>
                             <constraint firstItem="EiX-o7-SzB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="Wd2-HO-kui"/>
@@ -86,7 +78,6 @@
                             <constraint firstItem="wO3-cJ-jAo" firstAttribute="top" secondItem="EiX-o7-SzB" secondAttribute="bottom" constant="25" id="ZM7-Pg-3g3"/>
                             <constraint firstItem="eEH-qF-Yob" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="g5e-na-WNN"/>
                             <constraint firstItem="dxj-Us-5Ea" firstAttribute="top" secondItem="wO3-cJ-jAo" secondAttribute="top" id="iV8-2w-2t9"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="33i-Ll-hbL" secondAttribute="trailing" constant="50" id="kfV-r5-RKk"/>
                             <constraint firstItem="EiX-o7-SzB" firstAttribute="top" secondItem="eEH-qF-Yob" secondAttribute="bottom" constant="35" id="wTx-0k-45n"/>
                         </constraints>
                     </view>
@@ -217,7 +208,6 @@
     </scenes>
     <resources>
         <image name="checkmark.circle" catalog="system" width="128" height="121"/>
-        <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.crop.circle.badge.xmark" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
