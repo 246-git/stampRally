@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A3E31A6277B0B5800907A13 /* launchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A3E31A5277B0B5800907A13 /* launchIcon.png */; };
 		5A46ABDC274E1B6600842CFF /* Pods_Stamp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE302DACFAE48C08CDFA121 /* Pods_Stamp.framework */; };
 		5A46ABDF274E1B6B00842CFF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A46ABDA274E1B5400842CFF /* MapKit.framework */; };
 		5A46ABE32755BF6900842CFF /* GameView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A46ABE22755BF6900842CFF /* GameView.storyboard */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		0FE302DACFAE48C08CDFA121 /* Pods_Stamp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stamp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2370AB2E9AE5B92DD8899EEA /* Pods-Stamp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stamp.debug.xcconfig"; path = "Target Support Files/Pods-Stamp/Pods-Stamp.debug.xcconfig"; sourceTree = "<group>"; };
+		5A3E31A5277B0B5800907A13 /* launchIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchIcon.png; sourceTree = "<group>"; };
 		5A46ABDA274E1B5400842CFF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5A46ABE22755BF6900842CFF /* GameView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameView.storyboard; sourceTree = "<group>"; };
 		5A46ABE42755C2DC00842CFF /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				5AFBED3F27464FA700D97367 /* DetailViewController.swift */,
 				5A6768CB26778AD800152E07 /* SignUpViewController.swift */,
 				5A6768BA2677521C00152E07 /* Assets.xcassets */,
+				5A3E31A5277B0B5800907A13 /* launchIcon.png */,
 				5A6768BC2677521C00152E07 /* LaunchScreen.storyboard */,
 				5A6768BF2677521C00152E07 /* Info.plist */,
 			);
@@ -181,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A46ABE32755BF6900842CFF /* GameView.storyboard in Resources */,
+				5A3E31A6277B0B5800907A13 /* launchIcon.png in Resources */,
 				5A6768BE2677521C00152E07 /* LaunchScreen.storyboard in Resources */,
 				5A6768BB2677521C00152E07 /* Assets.xcassets in Resources */,
 				5A6768B92677521A00152E07 /* Main.storyboard in Resources */,
