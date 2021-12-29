@@ -81,6 +81,13 @@ class SignUpViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+    @IBAction func privacyPolicy(_ sender: Any) {
+        let url = URL(string: "https://github.com/246-git/NFCStampRally_PrivacyPolicy/blob/master/NFCStampRally_PrivacyPolicy")
+        //UIApplication.shared.openURL(url!)
+        // iOS 10以降利用可能
+        UIApplication.shared.open(url!)
+    }
+    
     // TextFieldを空にする
     func cleanTextField(){
         userNameTextField.text = ""
