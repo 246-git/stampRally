@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tv7-vc-2bx">
-                                <rect key="frame" x="0.0" y="44" width="390" height="590.66666666666663"/>
+                                <rect key="frame" x="0.0" y="44" width="390" height="548.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="stampCell" id="iA0-cn-ME2">
@@ -54,27 +54,39 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="VjJ-mI-U4z"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tG-Dd-CKb">
-                                <rect key="frame" x="112.66666666666669" y="686" width="165" height="25"/>
-                                <color key="tintColor" name="AccentColor"/>
-                                <state key="normal" title="スタンプを押す">
-                                    <color key="titleColor" name="AccentColor"/>
-                                    <imageReference key="image" image="iphone.radiowaves.left.and.right" catalog="system" symbolScale="large" renderingMode="template"/>
-                                </state>
-                                <connections>
-                                    <action selector="CaptureBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="G23-3r-sTa"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cK-Rc-Vb1">
+                                <rect key="frame" x="0.0" y="592.66666666666663" width="390" height="168.33333333333337"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tG-Dd-CKb">
+                                        <rect key="frame" x="112.66666666666669" y="71.666666666666742" width="165" height="25"/>
+                                        <color key="tintColor" name="AccentColor"/>
+                                        <state key="normal" title="スタンプを押す">
+                                            <color key="titleColor" name="AccentColor"/>
+                                            <imageReference key="image" image="iphone.radiowaves.left.and.right" catalog="system" symbolScale="large" renderingMode="template"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="CaptureBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="G23-3r-sTa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="9tG-Dd-CKb" firstAttribute="centerY" secondItem="0cK-Rc-Vb1" secondAttribute="centerY" id="v6O-hN-jNK"/>
+                                    <constraint firstItem="9tG-Dd-CKb" firstAttribute="centerX" secondItem="0cK-Rc-Vb1" secondAttribute="centerX" id="zCC-WS-Wor"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="0cK-Rc-Vb1" secondAttribute="trailing" id="Dxd-wv-Gp0"/>
+                            <constraint firstItem="0cK-Rc-Vb1" firstAttribute="top" secondItem="tv7-vc-2bx" secondAttribute="bottom" id="Hrc-au-oC5"/>
                             <constraint firstItem="tv7-vc-2bx" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="LLu-Oh-NN8"/>
                             <constraint firstItem="tv7-vc-2bx" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="PQp-rZ-PaG"/>
-                            <constraint firstItem="tv7-vc-2bx" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.7" id="Uyq-bS-PSX"/>
+                            <constraint firstItem="tv7-vc-2bx" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.65" id="Uyq-bS-PSX"/>
                             <constraint firstItem="tv7-vc-2bx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="eN0-ne-qLw"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9tG-Dd-CKb" secondAttribute="bottom" constant="50" id="mxi-Uu-nb0"/>
-                            <constraint firstItem="9tG-Dd-CKb" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="z0q-br-JhH"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="0cK-Rc-Vb1" secondAttribute="bottom" id="lVX-fh-VYc"/>
+                            <constraint firstItem="0cK-Rc-Vb1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="zSk-tf-cc2"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="H5y-ZS-mTc"/>
@@ -86,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2117" y="-250"/>
+            <point key="canvasLocation" x="2116.9230769230767" y="-250.23696682464453"/>
         </scene>
         <!--Map-->
         <scene sceneID="LRl-uj-If6">
